@@ -23,31 +23,6 @@ $ yarn start
 4. Visit `http://localhost:3000/` in your browser
 
 
-## Configuration
-Edit the `docusaurus.config.js` file in the repository's root directory, and update the value of the `businessUnit` field in presets section; below is a list of valid values:
-- Logos
-- Codex
-- Waku
-- Nimbus
-- Nomos
-- VacResearch
-- Acid.info
-
-Example:
-```js
-presets: [
-  [
-    '@acid-info/logos-docusaurus-preset',
-    {
-      businessUnit: 'Codex',
-    },
-  ],
-],
-```
-
-This is typically sufficient for most cases, as the Logos plugins will automatically populate other configurations related to the specified business unit. If you encounter any errors in the information provided by Logos Plugins, please visit the [Logos Docusaurus Plugins](https://github.com/acid-info/logos-docusaurus-plugins) repository and open an issue.
-
-
 ## Blog Setup
 
 The blog utilizes the Docusaurus blog plugin configured in `docusaurus.config.js`.
