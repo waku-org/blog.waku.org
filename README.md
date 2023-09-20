@@ -63,9 +63,8 @@ You can find instructions for adding additional documentation sections, implemen
 
 ## CI/CD
 
-- The `master` branch is automatically deployed to the production server (e.g., logos.co) through [CI](https://ci.infra.status.im)
-- The `develop` branch is automatically deployed to the staging server (e.g., dev.logos.co) through [CI](https://ci.infra.status.im)
-
+- The `master` branch is deployed to https://blog.waku.org/ through [Jenkins CI](https://ci.infra.status.im/job/website/job/blog.waku.org/).
+- The `develop` branch is deployed to https://dev-blog.waku.org/ through [Jenkins CI](https://ci.infra.status.im/job/website/job/dev-blog.waku.org/).
 
 ## Change Process
 
