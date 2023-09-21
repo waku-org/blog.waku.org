@@ -7,7 +7,7 @@ The template repository for blogs using [logos-docusaurus-plugins](https://githu
 
 1. Clone this repository
 ```bash
-$ git clone https://github.com/acid-info/logos-blog-template.git
+$ git clone https://github.com/waku-org/blog.waku.org.git
 ```
 
 2. Install the dependencies:
