@@ -1,0 +1,191 @@
+---
+layout: post
+name: 'Scaling Waku: A Progress Update'
+title: 'Scaling Waku: A Progress Update'
+date: 2023-09-21 00:00:00
+authors: mf
+published: true
+slug: scaling-waku-progress-update
+categories: scaling, waku, progress, milestones
+image: /img/black-waku-logo-with-name.png
+hide_table_of_contents: false
+---
+
+
+# Scaling Waku: A Progress Update
+
+
+
+As we move forward into the last months 2023, our primary goal has been to solidify the scalability of Waku protocols, focusing on [Status Communities](https://status.im/get-involved/community-groups/). 
+
+
+
+
+We have [set and reached](https://github.com/waku-org/pm/issues/12) our milestone of providing a Waku network that can scale to approximately 10K _active_ users in Status Communities. While continuing to provide [Status](https://status.im) the required network services to make such a community viable, we believe that the research, protocols, tools, and solutions we are working on will allow the overall Waku network to scale to [1 million+](https://github.com/waku-org/pm/issues/31) nodes. 
+
+
+To meet Status's timeline for the Communities feature, the Waku team made some tough decisions that required tradeoffs in terms of decentralization and other design goals. However, this approach has allowed us to demonstrate the core stability and scalability of Waku's protocols, while continuously working towards long-term solutions that provide better anonymity, robustness, and decentralization features.
+
+
+This article will continue diving deeper into what we did and where you can learn more about these topics. If you're already keen to get your hands dirty, we have recently published our upgraded [Waku documentation](https://docs.waku.org), allowing us to build faster, [together](https://docs.waku.org/community/).
+
+
+## Overview
+
+- [ **Theoretical: Laying the groundwork**](#laying-the-theoretical-groundwork)
+    - Theoretical Analysis of Scaling Gossipsub.  
+    - Static Sharding
+    
+- [**Bridging theory to practice**](#bridging-theory-to-practice)
+    - Simulations
+    - Status Telemetry Analysis 
+ 
+- [**Hands-on achievements**](#hands-on-achievements)
+    - Status MVP Delivery (Scaled Waku Communities to 10k)
+    - Protocol Service Improvements
+        - PostgreSQL transition
+        - Waku Peer Exchange
+        - Filter Protocol Redesign
+    - Status DoS mitigation mechanism
+    - Building for builders
+        - Waku Docs upgrade
+        - C API
+-   [**Contribute to the decentralisation of communication**](#contribute-to-the-decentralisation-of-communication)
+
+---
+
+
+## Laying the theoretical groundwork
+
+
+
+### Theoretical Analysis of Scaling gossipsub 
+We started in Q1 by doing a [theoretical analysis (mathematical modelling)](https://hackmd.io/IYmyyUIdSEuRZ7WbYd6dng?view) of GossipSub scaling under certain conditions. 
+
+The numbers for our message rates and sizes chosen for the model come from the telemetric analyses of typical traffic on significantly sizable Discord servers and existing Status Communities. From this, we conclude that the Waku Relay network can scale to 10,000 nodes per shard.
+
+Suppose we further assume that each Status Community operates on a separate shard. In that case, each community can scale to 10,000 _active_ relay-only users while bandwidth usage remains within a reasonable range for each user.
+
+Realistically most community nodes are not active simultaneously, so this approach could scale to ~100,000 nodes per community if roughly 1/10th of users are active at any time.
+
+### Static sharding
+
+Based on the analyses above, we published [an RFC](https://rfc.vac.dev/spec/57/), bringing together an integrated strategy to scale Status Communities based on static sharding. This requires manually selecting and configuring static shard(s) per community, with no sharing of shards between communities. Static sharding provides a simple way to achieve scalability with reasonable Denial of Service (DoS) protection (more on that below) but also requires some trade-offs in decentralisation and anonymity. Therefore, our longer-term strategy is to provide a way to auto-scale the Waku network with "autosharding" - this allows multiple applications and communities to share the same set of shards without intervening manually in the underlying message routing strategies. 
+
+[This Github issue](https://github.com/waku-org/research/issues/3) provides more information on our network strategy as we advance. In the near future you can expect an elaborated post on our strategy & roadmap.
+
+---
+## Bridging theory to practice 
+---
+
+### Simulations
+To test our theoretical conclusions, the Distributed Systems Testing (DST) team ran extensive simulations using a Waku simulation tool built on the Kurtosis framework, [Wakurtosis](https://github.com/vacp2p/wakurtosis). 
+
+The DST team has recently published a [summary report](https://docs.google.com/document/d/1U3bzlbk_Z3ZxN9tPAnORfYdPRWyskMuShXbdxCj4xOM/edit) detailing these conclusions about scalability, matching our theoretical expectations while showing that the nwaku client can deal with the resource overhead in a growing network.
+
+While achieving full-scale simulations of 10,000 nodes posed challenges, initial simulations of up to 1000 nodes aligned with our mathematical models. This gave us confidence in the viability of our approach.
+
+
+### Status telemetry analysis
+
+Having drawn theoretical conclusions under which a Waku Relay network would scale, we then experimented to verify our conclusions. Afterwards we performed a [telemetric analysis](https://github.com/vacp2p/vac-book/blob/main/scratch/status-scaling/status-telemetry-analysis.md) of current Status Community traffic.
+
+This allowed us to discover potential bottlenecks when sending large messages over Waku, determine major bandwith usage, and propose strategies to help Status Communities reasonably use Waku without compromising its scalability.
+
+
+
+
+---
+##  Hands-on achievements 
+---
+
+### Protocol service improvements
+
+To cater to the needs of a growing network of users on diverse platforms, the team improved (and in some cases wholly redesigned) our existing protocols based on the lessons we have learned from dogfooding the Waku network. Of these, the changes to the store and filter protocols were the most significant. 
+
+#### - PostgresSQL transition
+ To be able to retrieve an increasing amount of large history queries & messages from our store protocol, we have [transitioned](https://github.com/waku-org/pm/issues/4 ) from a simple SQLite backend to a more robust PostgreSQL archive. This allows store nodes to serve multiple queries in parallel while improving message reliability through redundancy. 
+
+#### - Filter protocol redesign
+The filter protocol allows resource-restricted devices to receive only a subset of messages routed in the network. We have redesigned [the entire filter protocol](https://rfc.vac.dev/spec/12/) to be more robust and provide features requested by Waku-based applications, such as refreshing existing subscriptions. 
+
+This new filter protocol version is currently being dogfooded within both mobile and desktop production environment, and the initial feedback is prominently positive.
+
+
+#### - **Waku peer exchange**
+ We have designed and then created a discovery mechanism suitable for resource-restricted nodes called [Waku peer exchange](https://rfc.vac.dev/spec/34/). Work on all these protocols empowers nodes, including resource-restricted devices, to participate seamlessly, ensuring that the network remains accessible to all.
+ 
+ 
+
+### Connectivity: discovering and managing peers
+
+A Waku network can only function well if we make it efficient for nodes to connect and interact. 
+
+During the first half of 2023, we spent significant effort improving how a node discovers peers and manages its connectivity to those peers. We have boosted a node's ability to differentiate between "good" and "bad" connections, including integrating [gossipsub peer scoring](https://github.com/libp2p/specs/blob/master/pubsub/gossipsub/gossipsub-v1.1.md#peer-scoring).
+
+
+Thanks to the introduction of [libp2p rendezvous discovery](https://rfc.vac.dev/spec/57/#libp2p-rendezvous-and-circuit-relay), nodes behind restrictive NATs can now make themselves discoverable and connect to other nodes by coordinating a NAT hole punch via a [circuit-relay connection](https://rfc.vac.dev/spec/57/#libp2p-rendezvous-and-circuit-relay). 
+
+We have also modified [discovery](https://rfc.vac.dev/spec/51/#discovery) methods such as [discv5](https://github.com/ethereum/devp2p/blob/master/discv5/discv5.md), to consider static sharding when filtering discovered nodes.
+
+### DoS protection
+
+One of the most important considerations of any Waku network deployment is protecting the network against spam and DOS attacks. While we are still working on productising a [privacy-preserving spam protection mechanism based on rate-limiting nullifiers](https://rfc.vac.dev/spec/17/), we focused in H1 on developing a simple DoS mitigation mechanism for Status Communities. 
+
+This requires all messages belonging to a community to be signed with a key distributed to all community members. Since static sharding ensures messages are only routed within a community, each relayer in the Waku network can validate that each routed message truly originated from within the community and discard those that did not.
+
+
+
+
+
+### Building for builders
+
+#### - Docs
+We are continuing to make building on Waku more accessible than ever. We have redesigned and improved our [docs website](https://docs.waku.org/), making it easier for you to get acquainted with our work.
+
+#### - C API
+The nwaku client has recently seen the introduction of [a C API](https://github.com/waku-org/nwaku/tree/b9d5d28af5afcc2589357a132c9b5beb57202828/examples/cbindings) that can be seamlessly wrapped in multiple programming languages (see the [Python wrapper](https://github.com/waku-org/nwaku/tree/b9d5d28af5afcc2589357a132c9b5beb57202828/examples/python) as an example), an efficient [addition](https://docs.waku.org/guides/nodes-and-sdks/) to our existing languages and frameworks support. By simplifying the process of integrating nwaku as a service node into other applications, we are fostering an environment where more projects can actively build on Waku and contribute to the Waku network. 
+
+## Setting the stage for growth
+
+This post provides a glimpse into the Waku Team's progress in the first half of 2023. 
+
+
+Our sights are currently set on taking what we have learned and building a [viable public Waku Network](https://github.com/waku-org/research/issues/1) that can scale to even larger numbers while maintaining our core [principles](https://status.im/about/#our-principles) of open-access, privacy-preservation, decentralisation, and transparency about trade-offs.
+
+
+Conquering those research & development challenges will not only scale Waku, but will play a significant role in growing and scaling Status Communities. Where we now have made certain trade-offs, our end-goal and principles are alligned in our end-goals, you'll soon read more about our goals and milestones in our upcoming Roadmap.
+
+
+
+As a team, we remain dedicated to this mandate while acknowledging the vast involvement of community members and collaborators who contribute to our journey.
+
+
+
+## **Contribute to the decentralisation of communication.**
+
+Help us ensure that we are staying decentralised by [running your own Waku Node!](https://docs.waku.org/guides/run-nwaku-node)
+
+|  | Integrate Waku in your application |
+| --- | --- |
+| nwaku | https://github.com/waku-org/nwaku |
+| Browser (JS/TS) | https://github.com/waku-org/js-waku |
+| Go | https://github.com/waku-org/go-waku |
+| Rust | https://github.com/waku-org/waku-rust-bindings |
+| More… | https://docs.waku.org/guides/nodes-and-sdks |
+
+
+Soon we will also release our upcoming roadmap. 
+
+Stay tuned, and follow our [Twitter](https://twitter.com/Waku_org) to keep yourself updated on new launches. Say hello to us on [Discord](https://discord.gg/GdJJh38sZR), [join our team](https://jobs.status.im/), or crack some of our [bounties](https://github.org/waku-org/bounties)  --- No need to remain shy! 
+
+
+
+
+
+------------
+*`Written by Mf & Hanno 09/2023`*
+
+
+
+
