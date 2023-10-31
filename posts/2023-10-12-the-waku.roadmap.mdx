@@ -17,9 +17,12 @@ What's an explorer without its compass, a network without roadmap?
 <!--truncate-->
 
 
+
 With the ongoing efforts of teams to scale Waku, those following Waku might be wondering where we are going. This article contains a pocket guide to our current technical goals throughout 2023 and parts of 2024. If you are primarily curious about our specific milestones and roadmap, jump [directly to it here](/waku-roadmap/#milestones--roadmap).
 
+
 We do not just promise to run user messages through a Firebase backend. Do not trust us; verify instead. Follow us to learn more about our work. Have a read **[here](https://blog.waku.org/scaling-waku-progress-update/)**.
+
 
 
 ## **Waku**
@@ -32,7 +35,9 @@ What is this network, and why does it matter what we are building? Isn’t [whis
 [Waku](https://waku.org) is a decentralised, open-source suite of privacy-preserving, peer-to-peer messaging protocols. It is designed for general messaging with humans, machines, or a hybrid situation. Waku runs everywhere. On your phone, a server, or through your browser.
 
 
+
 We apply [Waku Relay](https://docs.waku.org/overview/concepts/protocols/#relay) on top of the gossip protocol [GossipSub](https://docs.libp2p.io/concepts/pubsub/overview/) from libp2p to route messages & information with a subset of connected peers. We use this variation to increase our required levels of security and privacy. **A gossip protocol** is a peer-to-peer protocol in which nodes periodically exchange information about themselves and other associated nodes. *I recommend playing with this [(web)simulator by](https://flopezluis.github.io/gossip-simulator/) Flopezluis to understand how a gossip protocol intends to work visually.*
+
 
 Currently, it is possible to use the Waku Network and join a public gossipsub network in a permissionless manner. Some projects using Waku opt to do so ([Status Desktop](https://status.im/), [Railgun](https://docs.railgun.org/wiki/learn/privacy-system/community-relayers), and [TheGraph](https://docs.graphops.xyz/graphcast/design-principles) ([GRC](https://forum.thegraph.com/t/grc-001-graphcast-a-gossip-network-for-indexers/3544/9))). This permissionless use case has had some of its own limitations.
 
@@ -63,7 +68,9 @@ Restricted devices such as a phone or browser come with additional limitations. 
 
 
 
+
 ![](./assets/roadmap2023/WakuRoadmap2.png)
+
 
 
 ### Waku Fixes
@@ -79,6 +86,7 @@ The Waku protocols have solved the above issues with a series of fixes. These fi
 
 
 These solutions come with a cap on scalability alongside certain caveats. The [Waku Network Gen 0](/waku-roadmap/#Waku-Network-Gen-0) aims to remove those through:
+
 
 
 * **Automating shard allocation**: The auto-sharding protocol automatically allocates messages for an application.
@@ -108,10 +116,12 @@ It’s important to note that all current and future issues need to be solved wh
 
 
 
+
 ## **Milestones & Roadmap**
 Within Waku, we divide our work into epics and tasks within strategic milestones.
 
 [Epics](/waku-roadmap/#gen-0-epic-summaries--keys) are larger tasks often collaborated on; compare it to an epic quest, where you’ll need a ship and crew to conquer unknown waters. Within these epic quests, each crew member gets specific tasks linked to their particular skills
+
 
 
 We are currently tracking and planning towards four core milestones, of which Gen 0 is our primary objective. These are the milestones:
@@ -124,10 +134,11 @@ We are currently tracking and planning towards four core milestones, of which Ge
 
 
 Waku Network Gen 0 milestone owns this priority due to its relevance to launching Waku’s MVP. Within this milestone, we have 20 epics, divided through 3 tracks
-
 The Waku Network 1 Million milestone is a wrap-up of the work we have been committed to in H1 2023, which mainly consists of simulation, optimisation, and setup of [the 10k milestone](https://github.com/waku-org/pm/issues/12).
 
+
 ### Waku Network Gen 0
+
 
 
 
@@ -136,6 +147,7 @@ Why Gen 0? While this new set of protocols will enable Waku to be scalable and u
 # 
 
 ![](./assets/roadmap2023/WakuRoadmap3.png)
+
 
 
 
@@ -185,8 +197,10 @@ In Waku, we have organised our research and development work towards the Waku Ne
 
 ---
 
+
 ## **Gen 0 Epic Summaries & Keys**
 #### General Track
+
 
 - **[Epic 1.1: Network requirements and design](https://github.com/waku-org/research/issues/6)**
     * Goal: 22 Sept 2023
@@ -202,6 +216,7 @@ In this epic, we outline the technical blueprint for the entire network. The des
         - Launch a limited number of shards.
 
 Following 1.1, we track the designing and implementation of an [autosharding](https://rfc.vac.dev/spec/51/#automatic-sharding) strategy based on content topics and the design requirements established in 1.1. As stated in [our previous blog post](https://blog.waku.org/scaling-waku-progress-update#theoretical-analysis-of-scaling-gossipsub), the limitation of static sharding is that a party needs to assign shards to Communities. 
+
 
 With autosharding, the protocol handles the sharding allocation in a programmatic and decentralised manner, enabling applications to route their traffic on a shard in a permissionless way while keeping the scalability [property of shardng](/waku-roadmap/#Waku-Fixes).
 
@@ -387,7 +402,9 @@ Our roadmap should serve as a lucid guide. Addressing these technical intricacie
 
 
 
+
 ## **Help us navigate these waters**
+
 
 We need strong arms and capable minds on deck to ship out features continuously. Keen to give us a hand or contribute to our mission?
 
