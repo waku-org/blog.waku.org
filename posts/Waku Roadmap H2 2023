@@ -1,0 +1,239 @@
+# **The Waku Roadmap H2 2023**
+
+Waku offers decentralised, open-source messaging protocols designed for global accessibility on even resource-restricted devices. It empowers users to reclaim control over their data and communication, counteracting the global reach of technology giants and their centralised messaging applications that we currently rely on. In this blog post, we will touch on Waku's achievements in H1 2023, which centred around overcoming scalability limitations, before sharing our core H2 2023 milestones constructed around our goal of launching Waku Network Gen 0.
+
+
+## Background on Waku
+
+To understand why Waku exists, you need only to consider the centralised internet. Technology giants can dictate what we see and with whom we can communicate. The centralised platforms we regularly use to communicate have privileged access to outlandish realms of personal data that powerful commercial and political institutions can leverage. In contrast, [Waku](https://waku.org/) empowers internet users to circumvent these actions, offering a decentralised, open-source suite of privacy-preserving, peer-to-peer messaging protocols. The protocols are designed to flourish in resource-restricted environments to be accessible to people across the globe and can run on phones, servers, or browsers. Waku can be used for general messaging with humans, machines, or a hybrid situation.
+
+We apply [Waku Relay](https://hackmd.io/@vac/main/%2FYYlZYBCURFyO_ZG1EiteWg#11WAKU2-RELAY-gossipsub) on top of the gossip protocol [GossipSub](https://docs.libp2p.io/concepts/pubsub/overview/) from libp2p to route messages and information with a subset of connected peers, increasing security and privacy. A gossip protocol is a peer-to-peer protocol in which nodes periodically exchange information about themselves and other associated nodes. Currently, it is possible to use the Waku Network and join a public gossipsub network in a permissionless manner. Some projects using Waku that opt to do this include [Status Desktop and Mobile](https://status.im/), [Railgun](https://docs.railgun.org/wiki/learn/privacy-system/community-relayers), and [TheGraph](https://docs.graphops.xyz/graphcast/design-principles). 
+
+
+## Achievements in H1 2023
+
+One of the critical limitations of Waku is its reliance on a single GossipSub network for all users, which necessitates that each user relay traffic for all applications. As the adoption of Waku continues to grow, the bandwidth consumption skyrockets. Users with limited bandwidth capabilities are marginalised and unable to participate fully in the Waku Relay network. The key focus of the Waku development team in the first half of this year was to resolve some of these limitations around scaling to support the Status app’s goal of serving one million users.
+
+We met our milestone of providing a Waku network that can scale to approximately ten thousand active users within a [Status Community](https://status.im/), primarily thanks to implementing static sharding. Instead of having one relay network, we split the Waku Network into several relay (gossipsub) networks so that the application user is not required to relay all of the application’s traffic, but rather just the traffic on the same shard. [We have also developed opt-in message signing](https://blog.waku.org/scaling-waku-progress-update/) as another stopgap solution to match the Status app timeline and needs. The Community signs the messages with a single key belonging to the entire Community, presenting a securer solution than having individual signatures, but with space to enhance privacy nonetheless. This solution set, in addition to protocol and software improvements, should enable the Status team to launch the Status apps with reasonable bandwidth usage.
+
+The manual coordination of shard assignment with static sharding requires the actions of a central entity. While it is still permissionless, and anyone could run a node on any shard, the lack of coordination would deteriorate the user experience. Being able to scale Waku to support one million users on the Status app is dependent on our ability to improve on our H1 deliveries, which we will be stress testing and running through simulations.
+
+The Waku team also deployed basic) protections. The Denial of Service (DoS) protections are very light and do not give any guarantees regarding bandwidth usage. Users running a node, such as Status Desktop, will not want it to hog their bandwidth. What was delivered in H1 has caveats in terms of permissionless and relative DOS protection. It is possible to build an application with either properties, but not both. You will find our approach to resolving this in the H2 roadmap below. 
+
+You can read more about all of the deliveries in H1 [here.](https://blog.waku.org/scaling-waku-progress-update/)
+
+
+## Roadmap milestones in H2 2023
+
+Waku’s core milestone for H2 is launching and bootstrapping Waku Network Gen 0. There are an additional two milestones for 2024 that we have begun working on; those are: 
+
+
+
+* [Add support for multiple platforms](https://github.com/waku-org/pm/milestone/2)<span style="text-decoration:underline;">:</span>
+
+    We will be researching and experimenting with nim in 2023 to lay the groundwork for supporting multiple platforms. 
+
+* [Instate quality assurance processes](https://github.com/waku-org/pm/milestone/3)<span style="text-decoration:underline;">;</span>
+
+    This workstream has been initiated this year. 
+
+
+
+#### Waku Network Gen 0
+
+The [Waku Network Gen 0](https://hackmd.io/6Q_bHochRMOvTRXN0vCr5A?both#Waku-Network-Gen-0) builds on H1 2023’s network sharding innovations and uses rate limiting from work done in 2021 and 2022. The goal is to create one permissionless, auto-scalable, DoS protected public network. The auto-sharding protocol automatically allocates messages for an application and does not require a centralised, manual allocator.
+
+Through rate limiting, we will be working to ensure that users (or attackers) cannot flood the network beyond the maximum expected bandwidth usage. We will protect abuse through our RLN DoS protection, capping publishers to 1 message per second. We are also working on a dimensioning mechanism that would give publishers a maximum allocation of messages per day, limiting the maximum size of these messages within the overall network. Individuals can join a group on-chain and prove their membership in each message in a zero-knowledge manner – that is, without revealing which member they are. The number of members in the group is likely to be capped initially to guarantee maximum bandwidth usage by the network, although we will be able to review those when launching subsequent versions.
+
+Running nodes that fully participate in the Waku Relay Network should be encouraged. We aim to do so by optimising the software and making participation permissionless. With such innovations, the community can benefit from more neutral contributions to the network, hence the backbone of a secure, scalable network, and a more extensive set of nodes to get sender and recipient [k-anonymity](https://vac.dev/rlog/wakuv2-relay-anon?).
+
+It’s important to note that all current and future issues need to be solved while preserving our principles:
+
+
+
+* Private
+* Modular
+* Scalable
+* Censorship resistant
+* Portable: works on mobile and browser
+
+
+### Development Roadmap tracks
+
+We have organised our research and development work into three tracks:
+
+General Track;
+
+Service Protocols;
+
+DoS protection.
+
+We will review each track in more detail below. 
+
+
+#### General Track
+
+The foundational work focuses on creating a scalable and auto-sharded Waku Network. Here, we determine specifications, design, and implement strategies based on our research and development that aid in scaling the Waku Network.
+
+You can view the latest progress from the General Track [here](https://github.com/orgs/waku-org/projects/2/views/2?filterQuery=E%3A+1.+). Below are the key milestones and associated tasks from this track.
+
+
+
+* **[1.1: Network requirements and design](https://github.com/waku-org/research/issues/6)**
+    * Goal: 22 Sep 2023
+    * Key Activities:
+        * Determine network specifications and design.
+* **[1.2: Auto-sharding for autoscaling](https://github.com/waku-org/pm/issues/65)**
+    * Goal: 30 Sep 2023
+    * Key Activities:
+        * Design and implement auto-sharding strategy.
+        * Launch a limited number of shards.
+* **[1.3: Node bandwidth management mechanism](https://github.com/waku-org/pm/issues/66)**
+    * Goal: 31 Oct 2023
+    * Key Activities:
+        * Implement bandwidth management to choose shards based on availability for relay nodes dynamically
+        * Design predictable bandwidth limits per shard
+* **[1.4: Peer management and discovery](https://github.com/waku-org/pm/issues/67)**
+    * Goal: 30 Nov 2023
+    * Design transparent interaction between applications and shards
+    * Peer management system to track and discover public shared peers
+* **[1.5: Launch and dogfood integrated public Waku Network MVP](https://github.com/waku-org/research/issues/1)**
+    * Goal: 31 Jan 2024
+    * Key Activities:
+        * Launch Waku Network MVP
+        * Gather feedback and improve
+
+
+#### **Service Protocols**
+
+Our focus within [Service Protocols](https://docs.waku.org/overview/concepts/protocols) is required to upkeep and expand protocols such as filter, lightpush, peer exchange and store within the public network in a decentralised manner. Work within this track also involves ongoing efforts to incentivise our network.
+
+You can view the latest progress from the Service Protocols Track [here](https://github.com/orgs/waku-org/projects/2/views/2?filterQuery=E%3A+2.+). Below are the key milestones and associated tasks from this track.
+
+
+
+* **[2.1: Production testing of existing protocols](https://github.com/waku-org/pm/issues/49)**
+    * Goal: 30 Nov 2023
+* Test and improve current service protocols: [filter](https://rfc.vac.dev/spec/12/), [lightpush](https://rfc.vac.dev/spec/19/), and [peer-exchange](https://rfc.vac.dev/spec/34/).
+* **[2.2: Sharded capability discovery for light protocols](https://github.com/waku-org/pm/issues/63)**
+    * Goal: 30 Sep 2023
+* Peer selection mechanism that translates content topics to their underlying shard
+* **[2.3: Basic distributed store services](https://github.com/waku-org/pm/issues/64)**
+    * Goal: 30 Nov 2023 (integrate in 2024)
+    * Key Activities:
+        * Discover Store nodes for specific content topics and time ranges.
+        * Service nodes to advertise their store services
+* **[2.4: Basic design for service ](https://github.com/waku-org/pm/issues/80)incentivisation**
+    * Goal: 31 Dec 2023
+    * Key Activities:
+        * Incentivize service provision of the Waku Network
+        * Tokenomics implementation
+
+
+#### **DoS Protection**
+
+Denial of Service (DoS) mitigation is a challenge within any network. Bandwidth is a scarce resource for the Waku network; DoS protection is about stopping an attacker from flooding the network or for a Waku node to hog all of a user’s bandwidth. This track covers consensus mechanisms such as our rate-limiting designs. 
+
+We balance free traffic with a fairly incentivised structure that doesn’t exhaust the overall bandwidth. We must implement measures to ensure the bandwidth usage is feasible for additional protocol-wide DOS protection. We need to assist node operators in maximising the use of their resources and allocate shard support depending on current traffic so that we can assure ongoing service guarantees.
+
+You can view the latest progress from the DoS Protection Track [here](https://github.com/orgs/waku-org/projects/2/views/2?filterQuery=E%3A+3.+). Below are the key milestones and associated tasks from this track.
+
+
+
+* **[3.1: DoS requirements and design](https://github.com/waku-org/pm/issues/69)**
+    * Goal: 22 Sep 2023
+    * Key Activities:
+        * Define DoS/spam protection specifications.
+        * Design initial membership mechanisms.
+        * [Free and or paid traffic design](https://hackmd.io/@alrevuelta/rkqbPKaoo)
+* **[3.2: Basic DoS protection in production](https://github.com/waku-org/pm/issues/70)**
+    * Goal: 31 Oct 2023
+    * Key Activities:
+        * Implement and launch the RLN mechanism.
+        * Implement rate limiting
+* **[3.3: Membership for Status Communities](https://github.com/waku-org/pm/issues/71)**
+    * Goal: 30 Nov 2023
+    * Key Activities:
+        * Design membership assignments for community members
+        * 
+* **[3.4: Further memberships](https://github.com/waku-org/pm/issues/72)**
+    * Goal: 31 Dec 2023
+    * Key Activities:
+        * Expanding memberships to third parties
+
+
+### Anticipated risks to delivering our H2 milestones
+
+We have identified several challenges that may impact our ability to deliver on our roadmap milestones.
+
+**1. Ongoing structural design changes due to practical implications:**
+
+Our network dimensioning on modelling and assumptions may need to be modified when applied in real-world use cases. For example, we have designed the network not to allow more than one message published per second by each publisher. We have set message sizes to a maximum of 150 KB, implemented a 20-second grace period, and divided all traffic among 8 defined network shards. The risk is that, despite our modelling and research, the structural changes might not be helpful for all applications.
+
+We are committed to building in the open and accept that our [project management process](https://github.com/waku-org/pm/blob/master/README.md) could be better. This principle of openness is why we are dedicating effort to producing easily digestible content, such as our documentation at [docs.waku.org](https://docs.waku.org/).
+
+**2. Interactions between applications and nodes:**
+
+Waku Relay is the foundation for building decentralised communications. There is uncertainty on how applications will interact with the underlying nodes to ensure that all app traffic gets routed seamlessly and transparently, all while having a balanced data load throughout eight different routing shards.
+
+**3. Navigating Bandwidth Management**
+
+Bandwidth in peer-to-peer networks is a luxury that needs to be acutely observed and managed. To maintain a large group of peers hosting nodes, we must be capable of securely managing bandwidth allocation to their nodes.
+
+
+### Become a part of the Waku ecosystem
+
+If you have questions about Waku’s development roadmap or want to join a like-minded community focused on bringing peer-to-peer communications to millions of users, join the Waku [Discord](https://discord.gg/GdJJh38sZR) or follow us on [X](https://twitter.com/Waku_org).
+
+If the technology speaks to you, [check out our open job positions](https://jobs.status.im/) or crack some of our [bounties](https://github.org/waku-org/bounties).
+
+You can also help to ensure that we stay decentralised by [running your own Waku Node!](https://docs.waku.org/guides/run-nwaku-node)
+
+To integrate Waku into your application, check the table below for the necessary links. You can always get further support from us on Discord. 
+
+	
+
+
+<table>
+  <tr>
+   <td>
+   </td>
+   <td><strong>Integrate Waku into your application</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>docs
+   </td>
+   <td><a href="https://docs.waku.org/">https://docs.waku.org</a>
+   </td>
+  </tr>
+  <tr>
+   <td>nwaku
+   </td>
+   <td><a href="https://github.com/waku-org/nwaku">https://github.com/waku-org/nwaku</a>
+   </td>
+  </tr>
+  <tr>
+   <td>browser (JS/TS)
+   </td>
+   <td><a href="https://github.com/waku-org/js-waku">https://github.com/waku-org/js-waku</a>
+   </td>
+  </tr>
+  <tr>
+   <td>Go
+   </td>
+   <td><a href="https://github.com/waku-org/go-waku">https://github.com/waku-org/go-waku</a>
+   </td>
+  </tr>
+  <tr>
+   <td>Rust
+   </td>
+   <td><a href="https://github.com/waku-org/waku-rust-bindings">https://github.com/waku-org/waku-rust-bindings</a>
+   </td>
+  </tr>
+</table>
+
+
+We look forward to connecting and hearing your feedback on our roadmap. 
+
+
