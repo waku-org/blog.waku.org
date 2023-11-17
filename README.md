@@ -35,7 +35,7 @@ The blog utilizes the Docusaurus blog plugin configured in `docusaurus.config.js
     id: 'blog',
     routeBasePath: '/',
     path: 'posts',
-    blogTitle: 'Research Log',
+    blogTitle: 'Waku Blog',
     blogSidebarCount: 0,
     authorsMapPath: 'authors.yml',
     remarkPlugins: [math],
