@@ -56,3 +56,8 @@ amelia:
   name: 'Amelia Trapp'
   twitter: '@amelia_trapp'
   github: 'Amelia7689'
+
+guru:
+  name: 'Guru'
+  twitter: '@hackyguru'
+  github: 'hackyguru'
