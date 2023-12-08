@@ -282,7 +282,7 @@ export default function Hero() {
 }
 ```
 
-The above code is easy to understand if you have prior experience with react hooks like `useState() and useEffect()`. Summarising the above code, the state variable `game` will decide if the user wants to join an existing game or create a new game. `ShortUniqueId()` function will be used for generating a room ID if the user wants to create a new game.
+The above code leverages common React hooks like `useState() and useEffect()` to keep the app state and react to state changes. Summarising the above code, the state variable `game` will decide if the user wants to join an existing game or create a new game. `ShortUniqueId()` function will be used for generating a room ID if the user wants to create a new game.
 
 For the app's simplicity, the user creating the game will always be 'player X', and the user joining the game will be 'player O'. The session storage will hold the player as X or O and can be retrieved from the `player` item.
 
