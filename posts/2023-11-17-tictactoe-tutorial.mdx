@@ -45,7 +45,7 @@ Before we start, let us visualise the project's wireframe for a better understan
 
 The first screen on the left will be our landing screen with two buttons for starting a new game or joining an existing one. Each of the games in our TicTacToe game will have a `room-id` which two players will be connected to.
 
-Waku follows a 'content topic based architecture', meaning that the messages are routed and stored in different content topics across the network. In our case, the content topics would be the `room-id` since they serve the same purpose. Two players in a game will be connected on the same room-id.
+Waku follows a 'content topic based architecture', meaning that the messages are routed and stored based on different content topics across the network. In our case, the content topic would be the `room-id` since it maps perfectly. Two players in a game will be connected by publishing on and subscribing to the same content-topic/`room-id`.
 
 Do not worry if you need clarification about this - you can figure it out in the next steps as you build the project.
 
