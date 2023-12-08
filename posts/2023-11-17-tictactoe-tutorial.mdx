@@ -317,7 +317,7 @@ const ChatMessage = new protobuf.Type('ChatMessage')
   .add(new protobuf.Field('message', 3, 'string'));
 ```
 
-Next, let us set up encoders and decoders :
+Next, let us set up encoder and decoder:
 
 ```js
   const { decoder, encoder } = useContentPair();
