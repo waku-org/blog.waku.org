@@ -1,0 +1,79 @@
+---
+layout: post
+name: 'Key Learnings from Waku Hackers in 2023'
+title: 'Key Learnings from Waku Hackers in 2023'
+date: 2023-12-20 00:00:00
+authors: amelia
+published: 
+slug: learnings-from-hackers
+image: /img/black-waku-logo-with-name.png
+---
+
+A review of the key learnings from Waku hackathon participants this year and what we are doing to improve developers' experience. 
+
+<!--truncate-->
+
+# Key Learnings from Waku Hackers in 2023
+
+2023 has been an incredible year for Waku. We attended eight events across four continents, participated in three ETHGlobal hackathons, and hosted the first Waku Hacker House. It has been amazing to see the growth of the developer community on Waku, and we want to make sure that next year it will be even easier to onboard new hackers and developers.
+
+We recently held an X Space where we invited the winning projects from the ETHRome hackathon to tell us what they like about Waku, what worked well while using Waku, and where they saw areas for improvement. Below, you will find some of the key insights from the hackers and learn how their feedback is informing improvements around Waku documentation and the greater developer experience. 
+
+[Václav](https://twitter.com/vpavlin), [Aaron](https://twitter.com/vrycmfy), and [Guru](https://twitter.com/hackyguru) represented the Waku team on the Space. We were also joined by participants from the winning ETHRome teams [Feka](https://twitter.com/Feka_7heaven), [mrnmrc.eth](https://twitter.com/mrnmrceth), [Martin](https://twitter.com/martinlecl), [Régis](https://twitter.com/Rgis295478), [Florian](https://twitter.com/floriantruchot), and [Mattia](https://twitter.com/Mattia).  
+
+[embed: https://twitter.com/Waku_org/status/1722659158816612463]
+
+
+## “Blockchain seems like the default way to do decentralised things, but in the end, it's not the only one” Mattia
+
+Mattia expressed his enthusiasm for the emergence of decentralised technologies like Waku that break away from the conventional reliance on blockchain. By operating independently from a blockchain, Waku benefits from decentralisation and speed without requiring gas fee payments to execute transactions. 
+
+Mattia praised the seamless interoperability enabled by Waku’s blockchain-agnostic nature, allowing his team and all the hackers at the event to use the protocols on any platform without restrictions. He noted that this helps to eliminate silos between chains, which is a key issue in web3. We believe this platform-agnostic characteristic will help Waku become the standard for communication in web3. 
+
+
+## Top tip for hackers: What we mean when we say “no more chat apps”
+
+As you may have noticed, during Waku’s recent hackathon, we requested that participants not submit ‘standard chat apps’. If you are wondering why, many of these are already in the ecosystem, and we want to encourage hackers to find new use cases that can add value to users. Chat apps refer to person-to-person messaging apps, such as Telegram. But much of the functionality within Waku revolves around chat-like interactions. As Guru and Valcav noted, in essence, Waku activities are akin to a chat interface, albeit one that transcends traditional UI constraints. Even sophisticated applications, such as that submitted by Mattia's team, are essentially exchanges of messages between JS Waku nodes, where the content could range from simple text to more complex data like GPS locations.
+
+Whether it is a conversation between humans or machines, the core principle remains a form of chat. Within the Waku ecosystem, users essentially engage in a dialogue, either issuing commands to nodes for execution or communicating with AI services, which then carry out tasks based on predefined transactions. Hackers require creativity to transform these chat-like exchanges into something truly exciting. 
+
+
+## Issues with Waku documentation and what we are doing about it
+
+Matija shared that his team had difficulties when it came to implementing encryption, and they had to resort to using asymmetric encryption. They created a public-private key pair and exchanged it between the users. This is not always convenient, especially if there is a group of people involved. It presents a challenge to Waku’s bandwidth constraints to ensure everyone has all of the relevant public keys and then to re-encrypt them. 
+
+A protocol in Waku called Noise solves this by negotiating a symmetric key pair between users. Multiple teams shared feedback that it was either not easy to locate the correct resources or that it was not easy to use. While we currently have [developer specification](https://rfc.vac.dev/spec/35/) documents for Noise on the Vac research site, based on the hackers' feedback, we have created more accessible guides around encryption, which will be live very soon on the [Waku Docs](https://docs.waku.org/) site. We will be following this with better Noise protocol guides soon. 
+
+Federico noted that he and his team found it overwhelming to use Waku for the first time due to its extensive components that did not align with their project requirements. However, they commended the well-written nature of the documentation that provided a solid foundation for their work. In particular, he attested to the quality of the ‘[getting started](https://docs.waku.org/)’ example. However, he suggested that for hackathon projects, a more streamlined and beginner-friendly example would be beneficial. Additionally, Frederico recommended incorporating examples with popular frameworks like React, as it aligns with the prevalent usage of frameworks in building applications.
+
+Václav acknowledged the limited nature of the current documentation and examples; it is a symptom of Waku’s relative youth and constant evolution. Václav encouraged community participation by highlighting the existence of the[ bounties repository](https://github.com/waku-org/bounties/), where contributors can propose and work on examples aligned with specific frameworks or use cases. This collaborative approach aims to address gaps in documentation and make Waku more accessible to a broader audience.
+
+We are happy to share that since the X Space happened, we have released a [Waku React package](https://docs.waku.org/guides/js-waku/use-waku-react/) based on Federico's feedback that provides components and UI adapters to integrate @waku/sdk into React applications effortlessly.
+
+
+## We are improving connection issues by better node incentivisation
+
+Martin and Florian shared that their team experienced network connection issues several times during the hackathon, noting that the network was likely overloaded due to the significant number of hackathon participants. Aaron shared his appreciation for the feedback: “We must be brutally honest if we are going to fix the things that aren't easy to work with.” 
+
+Running nodes that fully participate in the Waku Relay Network should be encouraged, and [we have been doing so in this Q](https://blog.waku.org/waku-roadmap) by optimising the software and making participation permissionless. With such innovations, the community can benefit from more neutral contributions to the network, hence the backbone of a secure, scalable network, and a more extensive set of nodes to get sender and recipient k-anonymity.
+
+
+## You called for storage… and it is coming!
+
+The hackers mentioned that using Waku alone without any additional decentralised storage solution limits what they can build during a hackathon's time-constrained period. As Václav noted: “Waku is in general ephemeral, and it should not be used, and it cannot be used for long-term storage.”
+
+Until now, hackers have relied on alternatives such as IPFS and Arweave when they need a decentralised storage element for their projects. However, both options rely on some form of centralised gateways to access external data.
+
+The good news is [Codex](https://codex.storage/) will soon be ready to step in and fill the gap. As the storage layer of the [Logos](logos.co) technology stack, Codex is durable and decentralised. Codex implements protocol constructs that incentivise wide participation of data storage providers, both small and large, thus ensuring a robust network resistant to censorship and external attack.
+
+
+## “We're on the precipice of something that we've all been waiting for” Aaron
+
+Aaron took a moment in the Space to remind the community how close Waku is to realising one of the original promises of the Ethereum ecosystem - a decentralised peer-to-peer communications protocol. 
+
+“With Waku, we're on the precipice of something we've all been waiting for. We cannot lose sight of the tech that props up this entire ecosystem… In the Ethereum whitepaper, Whisper was outlined as the peer-to-peer communication protocol for the network. Due to one reason or another, Whisper's development did not progress in the same way other areas did. Waku boldly is picking up that torch and going forward. And with so many different world events happening, both positive and otherwise, Waku aims to be a tool for all people and machines to be leveraged.”
+
+Please ensure you follow [Waku on X](https://twitter.com/Waku_org) to get updates on the upcoming X Space, scheduled for February. The teams behind the best projects from ETHIstanbul and ETHIndia will join us. 
+
+We will be participating in more major hackathons next year, which we hope to see you at, but in the meantime, why not check out our [open bounties](https://github.com/waku-org/bounties/issues)? You are welcome and encouraged to share your feedback with us anytime on [Discord](https://discord.com/invite/gMPAzmcDER).
+
