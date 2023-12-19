@@ -26,16 +26,16 @@ We recently held an X Space where we invited the winning projects from the ETHRo
 
 ## “Blockchain seems like the default way to do decentralised things, but in the end, it's not the only one” - Mattia
 
-By operating independently from a blockchain, Waku benefits from decentralisation and speed without requiring gas fee payments to execute transactions. 
+By not executing transactions on a blockchain, Waku protocols benefit from decentralisation and speed without requiring gas fee payments. 
 
-Mattia praised the seamless interoperability enabled by Waku’s blockchain-agnostic nature, allowing his team and all the hackers at the event to use the protocols on any platform without restrictions. He noted that this helps to eliminate silos between chains, which is a key issue in web3. We believe this platform-agnostic characteristic will help Waku become the standard for communication in web3. 
+Mattia praised the seamless interoperability enabled by Waku’s platform-agnostic nature, allowing his team and all the hackers at the event to use the protocols on any platform or blockchain without restrictions. He noted that this helps to eliminate silos between chains, which is a key issue in web3. We believe this platform-agnostic characteristic will help Waku become the standard for communication in web3. 
 
 
 ## Top tip for hackers: What we mean when we say “no more chat apps”
 
-As you may have noticed, during Waku’s recent hackathon, we requested that participants not submit ‘standard chat apps’. If you are wondering why, many of these are already in the ecosystem, and we want to encourage hackers to find new use cases that can add value to users. Chat apps refer to person-to-person messaging apps, such as Telegram. But much of the functionality within Waku revolves around chat-like interactions. As Guru and Valcav noted, in essence, Waku activities are akin to a chat interface, albeit one that transcends traditional UI constraints. Even sophisticated applications, such as that submitted by Mattia's team, are essentially exchanges of messages between JS Waku nodes, where the content could range from simple text to more complex data like GPS locations.
+As you may have noticed, during Waku’s recent hackathon, we requested that participants not submit ‘standard chat apps’. If you are wondering why, many of these are already in the ecosystem and we want to encourage hackers to find new use cases that can add value to users. Building a chat protocol with the proper security parameters to protect its users during a hackathon is also highly challenging. Chat apps refer to person-to-person messaging apps, such as Telegram. But much of the functionality within Waku revolves around chat-like interactions. As Guru and Valcav noted, in essence, Waku activities are akin to a chat interface, albeit one that transcends traditional UI constraints. Even sophisticated applications, such as that submitted by Mattia's team, are interactions between JS Waku nodes, where the data could range from simple text to more complex data like GPS locations.
 
-Whether it is a conversation between humans or machines, the core principle remains a form of chat. Within the Waku ecosystem, users essentially engage in a dialogue, either issuing commands to nodes for execution or communicating with AI services, which then carry out tasks based on predefined transactions. Hackers require creativity to transform these chat-like exchanges into something truly exciting. 
+Whether it is interactions between humans or machines, the core principle remains a form of chat. Within the Waku ecosystem, users essentially engage in a dialogue, either issuing commands to nodes for execution or communicating with AI services, which then carry out tasks based on predefined transactions. Hackers require creativity to transform these interactions into something truly exciting. 
 
 
 ## Issues with Waku documentation and what we are doing about it
@@ -64,7 +64,7 @@ The hackers mentioned that using Waku alone without any additional decentralised
 
 Until now, hackers have relied on alternatives such as IPFS and Arweave when they need a decentralised storage element for their projects. However, both options rely on some form of centralised gateways to access external data.
 
-The good news is [Codex](https://codex.storage/) will soon be ready to step in and fill the gap. As the storage layer of the [Logos](logos.co) technology stack, Codex is durable and decentralised. Codex implements protocol constructs that incentivise wide participation of data storage providers, both small and large, thus ensuring a robust network resistant to censorship and external attack.
+The good news is [Codex](https://codex.storage/) is currently in development and will be able to step in and fill the gap. As the storage layer of the [Logos](logos.co) technology stack, Codex is durable and decentralised. Codex implements protocol constructs that incentivise wide participation of data storage providers, both small and large, thus ensuring a robust network resistant to censorship and external attack. An end-to-end solution with good integration between Waku and Codex will give developers precisely what they need from communications and storage.
 
 
 ## “We're on the precipice of something that we've all been waiting for” Aaron
