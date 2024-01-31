@@ -1,0 +1,123 @@
+---
+layout: post
+name: 'January EcoDev Roundup'
+title: 'The Waku Roadmap'
+date: 2024-02-01 00:00:00
+authors: [amelia]
+published: true
+slug: january-ecodev
+categories: waku, progress
+image: /img/black-waku-logo-with-name.png
+hide_table_of_contents: false
+---
+
+
+# January EcoDev Roundup
+Updates from the EcoDev team in January 2024, plus highlights from the first Waku community call. 
+
+<!--truncate-->
+
+The EcoDev team at Waku covers community, growth, partnerships, and communications. Each month, we will share the key highlights and progress of the team. You can [subscribe](https://waku.org/subscribe/) to the monthly newsletter if you prefer to receive an abridged version of these updates in your inbox. 
+
+
+## Events and Hackathons
+
+In 2023, Waku participated in three hackathons and eight events across four continents. We are gearing up for another year full of events; expect to see us all around the globe once again. Waku will be attending two key in-person events in Q1 2024. We will focus on growing the developer community and meeting with projects to support further integrations with Waku.
+
+**ETHDenver 23rd February - 3rd March**
+
+Meet the Waku team attending ETHDenver: Aaron Bendesrky, Waku Program Manager at Logos, Pedro Lains, Business Development Lead, and Guru T, Developer Relationships Engineer. ETHDenver is a great opportunity to meet the Waku team face to face; atendees can book an appointment with the team [here](https://waku.org/events/eth-denver/).
+
+**ETHLatam 13th - 14th March**
+
+Waku has $3,500 in bounties on offer during the hackathon. The team on the ground will support the hackers across the two days in building their projects for submission, and we expect to see many more new use cases for Waku.
+
+Anybody hosting a side event at ETHDenver or ETHLatam and would like to collaborate with Waku, drop us message on [Discord](https://discord.com/invite/gMPAzmcDER). 
+
+
+## Press and Media
+
+**Vitalik Buterin Recognises Waku: **This month, Waku received an excellent shout-out from Vitalik Buterin, who recognised Waku as the successor of Whisper, the original peer-to-peer communications protocol for Ethereum. In a [blog post](https://vitalik.eth.limo/general/2023/12/28/cypherpunk.html#ethereum-as-part-of-a-broader-technological-vision), Buterin supported Waku as the realisation of the cypherpunk messaging protocol imagined by Gavin Wood.
+
+The story was also covered in [CoinTelegraph](https://cointelegraph.com/press-releases/vitalik-buterin-recognises-waku-as-the-peer-to-peer-communications-layer-of-gavin-woods-web3-vision), [CryptoDaily](https://cryptodaily.co.uk/2024/01/meet-waku-the-peer-to-peer-communications-protocol-recognized-by-vitalik-buterin), and [The Defiant](https://thedefiant.io/waku-the-p2p-communication-protocol-for-web3-recognized-by-vitalik-buterin). 
+
+**Waku was voted as a top privacy project of 2023**: Web3 Privacy Now included Waku on their long list of [top privacy-focused projects](https://mirror.xyz/0x0f1F3DAf416B74DB3DE55Eb4D7513a80F4841073/LdOt0mlG_nXqhnmLf7s-X13NDNdpwQw72ESKaJq-0zA) of the year. The finalists were voted on by over 100 privacy enthusiasts, developers, researchers, cryptographers, cypherpunks, and community builders from DarkFi, Nym, Swarm, Logos, Railgun, and many other organisations.
+
+
+## Technical Releases
+
+**The Waku React package:** The package provides the components and UI adapters needed to integrate Waku SDK into React applications effortlessly. We developed the package in response to feedback from hackathon participants last year. The documentation, including detailed steps on using the package, [can be found here](https://docs.waku.org/guides/js-waku/use-waku-react/). 
+
+There is also a [beginner-friendly tutorial](https://blog.waku.org/tictactoe-tutorial/) for building a simple tic-tac-toe game that can be played by two players who are connected using Waku.
+
+**Open Bounties:** We have reviewed and revised the Waku bounties, ensuring that these tasks are beginner-friendly. Our goal is to make it easier for newcomers to Waku to contribute and, in turn, support the growth of the ecosystem.Anyone can work on the bounties at their own pace, as there is no hard cut-off date. When a bounty proposal is approved, it will be marked as ‘Assigned’. Find the open bountie [here.](https://github.com/waku-org/bounties/issues)
+
+
+## Team Updates
+
+The team has expanded this month, with the new EcoDev Team Lead Marina and a new Business Development Lead, Pedro, joining the team.
+
+You can connect with [Marina](https://twitter.com/Crypto_marina) and [Pedro](https://twitter.com/bigbraincap) on X.
+
+If you are interested in working with Waku, [we are currently hiring a Software Engineer](https://boards.greenhouse.io/waku/jobs/5607301) to work with the Waku Chat SDK. The position is fully remote, and we hire globally. 
+
+
+---
+
+
+## Waku Community Call and AMA
+
+Waku will host a Community Call on X on the last Friday of each month. The objective of the call is to update the community on our progress and provide a space where questions can be put to the team 
+
+The first Community Call took place last week on the 26th of January. You can [listen back to the full Space](https://twitter.com/Waku_org/status/1750927368644919722), and read the highlights below. 
+
+[Vaclav](https://twitter.com/vpavlin), [Guru](https://twitter.com/hackyguru), and [Aaron](https://twitter.com/vrycmfy) from the Waku team participated in the call. 
+
+
+### Waku network updates 
+
+**Vaclav**: If you don't know what the Waku Network is, it is our attempt to formalise a network of peer-to-peer nodes that would form some network running Waku protocols. We are very proud to have released the Gen 0, and there will likely be more generations to come right before Devconnect in Istanbul this November.
+
+It's just the beginning for the Waku Network; we're still dogfooding it. You can see [the list of milestones and the roadmap for improvements](https://github.com/waku-org/pm/issues/101) put forward by the research team. There’s also an interesting discussion you can join in the [Vac Forum](https://forum.vac.dev/t/message-validation-marketplace-waku-network-of-networks/262/2).
+
+As part of Generation 0 of Waku Network, we have integrated sharding, ensuring that it’s scalable to thousands of users and that the bandwidth is reasonable for people running on Raspberry Pis or smaller devices with weaker connectivity. Our client targeted at low-resource devices, JSWaku, has been making progress towards fully supporting sharding and, by that, supporting the full Waku Network.
+
+
+### Future incentivisation for running Waku nodes?
+
+**Vaclav: **We are often asked about how we incentivise node runners, as well as who is running the nodes and why. There are currently no monetary or token incentives. However, the research team has recently published findings that offer a glimpse into an incentivisation proposal. That's very interesting and promising for the future of Waku node operators to maybe get something in return.
+
+
+### Growth of the Waku dev ecosystem
+
+**Guru: **We had our first Waku hackathon at ETHRome last year where 120 hackers participated. We received eight project submissions from EthRome, which was a high number for us as a first-time sponsor. At ETHIstanbul our submissions increased to 20. We closed the year with ETHIndia where we had a huge total of 51 project submissions.
+
+The graph has been trending consistently upwards as more hackers and developers discover Waku. We are exploring ways to offer support to these projects in terms of development, as well as raising funding and grants.
+
+
+### Project integrations with Waku
+
+**Guru: **Waku has been integrated into several existing projects already. [Status](https://status.app/), of course, is the original use case for Waku, and they have been the first to benefit from the Waku Network. 
+
+[Railgun](https://www.railgun.org/) has been friends of Waku for a long period of time, and they integrated Waku around a year and a half ago. We also completed an integration with [The Grap](https://thegraph.com/)h, which uses Waku in its Graphcast SDK to decentralise its indexes.
+
+[Silence Laboratories](https://www.silencelaboratories.com/) has also been researching building a multiparty computation (MPC) on top of Waku.
+
+[Tribes](https://www.tribes.xyz/) is also exploring how Waku can be implemented in their stack. Tribes are focused on privacy and censorship assistance, so it would be a great fit.
+
+
+### The meaning behind the name Waku
+
+**Vaclav: **The word Waku is Japanese meaning to well up, to gush forth, and to spring out. 
+
+Waku also has a meaning in Chewa language, a language spoken in Malawi. If we want to use the Chewa language meaning, it’s close to _keep your data local and your communication borderless_, which fits perfectly.
+
+
+---
+
+That is it for this month’s Eco Dev roundup!
+
+If you have questions about what the team has been doing or want to join a like-minded community focused on bringing peer-to-peer communications to millions of users, join the Waku [Discord](https://discord.com/invite/gMPAzmcDER) or follow us on [X](https://twitter.com/Waku_org).
+
+[Subscribe](https://waku.org/subscribe/) to the monthly newsletter for these updates directly in your inbox.
+
