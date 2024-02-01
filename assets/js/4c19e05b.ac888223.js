@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkblog_waku_org=self.webpackChunkblog_waku_org||[]).push([[889],{74677:e=>{e.exports=JSON.parse('{"permalink":"/","page":1,"postsPerPage":10,"totalPages":1,"totalCount":6,"blogDescription":"Blog","blogTitle":"Waku Blog"}')}}]);
