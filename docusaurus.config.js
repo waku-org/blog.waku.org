@@ -71,6 +71,14 @@ const config = {
         },
       },
     ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'root-pages',
+        routeBasePath: '/',
+        path: 'root-pages',
+      },
+    ],
   ],
 
   themeConfig:
@@ -116,8 +124,12 @@ const config = {
                 href: 'https://jobs.status.im/',
               },
               {
-                label: 'Terms & Conditions',
-                to: '/terms',
+                href: '/terms',
+                label: 'Terms of Use',
+              },
+              {
+                href: '/privacy-policy',
+                label: 'Privacy Policy',
               },
             ],
           },
