@@ -42,8 +42,8 @@ Waku was born as a successor of Whisper, learning from its flaws to provide a sc
 
 Waku aims to overcome the following challenges:
 
-- Generalized messaging: Waku aims to provide protocols and a network that enables the transfer of arbitrary payloads. While Waku was originally created for a chat application, Status, the aim is to be generalized enough so that many applications can be built using Waku.
-- Ephemeral messaging: Waku aims to solve the problem of instant communication, where the aim is to provide fair latency to enable one or several users to exchange small data payloads. This is in contrast to IPFS or other decentralized storage systems, which provide a way to store large amounts of data, at the expense of latency and responsiveness.
+- Generalized messaging: Waku aims to provide protocols and a network that enables the transfer of arbitrary payloads. While Waku was originally created for a chat application, Status, the aim is to be generalized enough so that any decentralized communication or signalling application can be built on Waku..
+- Ephemeral messaging: Waku aims to solve the problem of real-time communication, where the aim is to provide fair latency to enable one or several users to exchange small data payloads. This is in contrast to IPFS or other decentralized storage systems, which provide a way to store large amounts of data, at the expense of latency and responsiveness.
 - Censorship-resistance: Waku aims to provide a censorship-resistant solution where external actors cannot block users' access to the Waku infrastructure. But also for app developers to be able to build with a _cannot do evil_ mindset where they do not have the key to the kingdom and the ability to deplatform their own users.
 - Privacy-minded: To provide the ability for app developers to operate on a _cannot do evil_ principle in terms of data and metadata collection of their own users. Meaning that even if they wanted or were pressured to, they, or any third party, could not collect metadata such as social graph or activity pattern from their users.
 - Anonymity: Similarly to privacy, this is the ability for users to not link Personal Identifiable Information (PII) to their activity on the Waku network or application using the network. PII considered here are in regards to the network (IP address), blockchain (e.g. Ethereum address), and routing (message correlation).
@@ -64,9 +64,9 @@ Let’s review the different Waku protocols that are combined in the network and
 
 ### Peer Discovery
 
-For any peer-to-peer system to be reliable and decentralized, there needs to be a mechanism to find new peers or nodes in said system, usually called _peer discovery_.
+For any peer-to-peer system to be reliable and decentralized, there needs to be a mechanism to find new peers or nodes in said system, called _peer discovery_.
 
-Waku uses discv5, similarly to Ethereum. Minor enhancements to ENR have been done to enable Waku node to advertise:
+Waku uses discv5, similarly to Ethereum. [Minor enhancements](https://rfc.vac.dev/spec/31/) to [ENR (Ethereum Node Record)](https://eips.ethereum.org/EIPS/eip-778) have been done to enable Waku node to advertise:
 
 - the shards they are operating in (see [message routing - sharding](#message-routing--sharding))
 - the protocol they have enabled
@@ -76,13 +76,13 @@ Discv5 is decentralized, meaning that it can prevent potential sybil attacks whe
 
 This helps enable anonymity, privacy, and censorship-resistance.
 
-Thanks to the protocol serviced being advertised, it enables mobile phones and the browser to find nodes that can service them.
+Thanks to the supported protocol being encoded, it enables mobile phones and the browser to filter and connect to nodes that can service them.
 
 ### Message Routing - Gossipsub
 
 Similar to Ethereum, Waku uses libp2p-gossipsub. This brings several benefits:
 
-- improved bandwidth performance in comparison to Whisper: in gossipsub, nodes form a group of neighbors (mesh), to which they send messages. it means that a given node will only attempt to maintain ~20 connections and actively exchange messages with ~4 other nodes. Reducing the number of times each message is uploaded or downloaded.
+- improved bandwidth performance in comparison to Whisper: in gossipsub, nodes form a group of neighbors (mesh), to which they send messages. it means that a given node will only attempt to maintain a limited number of  connections and actively exchange messages with a small subset of its peers. Reducing the number of times each message is uploaded or downloaded.
 - Reliability: gossipsub has built-in redundancy, which gives fair reliability when operating in a decentralized peer-to-peer network, where no node can be trusted to be reliable or well-behaved.
 - Anonymity: as nodes forward messages from other nodes in their mesh, and no metadata is present on individual messages (e.g., no plain text signature), this provides fair anonymity as it is not possible for an observer to know if their neighbor originated or forwarded a message. This works when combined with a decentralized peer discovery mechanism such as discv5.
 
@@ -94,7 +94,7 @@ One of the drawbacks of Gossipsub is that every node in the network receives and
 
 One can see how this limits scalability: it cannot be expected to traffic the whole traffic of the network from a household internet connection.
 
-To solve this problem, sharding is used: instead of having one gossipsub network. The Waku network is split into several networks, or shards.
+To solve this problem, sharding is used: instead of having one gossipsub network; The Waku network is subdivided into several distinct message routing subnetworks, or shards.
 Currently, the Waku network is split into 8 shards.
 It means that any user of a Waku application would only relay the traffic of one shard, or one 8th (approximately) of the whole network.
 
@@ -113,7 +113,8 @@ Autosharding is a simple protocol that dispatches messages on a shard based on t
 
 ### Message Routing - RLN Relay
 
-Waku is generalized, meaning any kind of payload can be transported. Hence, there is no strict definition of “spam”. Whether the message contains a [meme](https://github.com/b4s36t4/waku-meme) or a [zk note for private DeFi](https://railgun.ch/#/), Waku shouldn't even know the content; metadata and data should remain private.
+Waku is generalized and privacy-preserving, meaning any kind of payload can be transported.
+Hence, there is no strict definition of _content spam_. Whether the message contains a [meme](https://github.com/b4s36t4/waku-meme) or a [zk note for private DeFi](https://railgun.ch/#/), Waku shouldn't even know the content; metadata and data should remain private.
 
 Hence, there is a risk of someone pushing gigabits of data to the network. This can be a problem at different levels:
 
@@ -130,16 +131,16 @@ It is currently set to 1 msg/s. Coupled with a maximum message size (150kB) and 
 Rate-limiting publishers in a censorship-resistant and private manner is difficult; this is why we are using zero-knowledge technology:
 
 1. Users push their RLN credentials to a smart contract (currently on Ethereum Sepolia testnet).
-2. Nodes watch the contract and include the new membership.
+2. Nodes keep track of all registered memberships on the contract.
 3. When sending a message, the user attaches an RLN proof to the message with the current epoch (timestamp in seconds).
 4. Nodes can verify the proof, without being able to correlate the user’s Ethereum address (used on the smart contract) with the message being sent, preserving anonymity.
-5. If a user attempts to send more than 1 msg/s, nodes can detect this and drop the message surplus, or spam, protecting the network.
+5. If a user attempts to send more than 1 msg/s, nodes can detect this and drop the message surplus (spam), disconnect from the peer forwarding spam and hence isolating the spam origin from the network.
 
 ### Servicing Mostly-offline and Resource-restricted Devices
 
 Finally, how is Waku useful to mobile and browsers?
 
-Waku defines a number of [request-reply protocols](https://rfc.vac.dev/spec/10/#requestreply-domain) to enable such devices to access the Waku network, without having to be always online or consume extensive amounts of bandwidth, i.e., without participating in the Waku Relay network.
+Waku defines a number of [request-response protocols](https://rfc.vac.dev/spec/10/#requestreply-domain) to enable such devices to access the Waku network, without having to be always online or consume extensive amounts of bandwidth, i.e., without participating in the Waku Relay network.
 
 The light push protocol (links to docs) enables a _light client_ to send a message to be forwarded to the Waku Relay network, with acknowledgment of reception from the remote node.
 
