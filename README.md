@@ -63,8 +63,12 @@ You can find instructions for adding additional documentation sections, implemen
 
 ## CI/CD
 
-- The `master` branch is deployed to https://blog.waku.org/ through [Jenkins CI](https://ci.infra.status.im/job/website/job/blog.waku.org/).
-- The `develop` branch is deployed to https://dev-blog.waku.org/ through [Jenkins CI](https://ci.infra.status.im/job/website/job/dev-blog.waku.org/).
+- [CI builds](https://ci.infra.status.im/job/website/job/blog.waku.org/) `master` and pushes to `deploy-master` branch, which is hosted at <https://blog.waku.org/>.
+- [CI builds](https://ci.infra.status.im/job/website/job/dev-blog.waku.org/) `develop` and pushes to `deploy-develop` branch, which is hosted at <https://dev-blog.waku.org/>.
+
+The hosting is done using [Caddy server with Git plugin for handling GitHub webhooks](https://github.com/status-im/infra-misc/blob/master/ansible/roles/caddy-git).
+
+Information about deployed build can be also found in `/build.json` available on the website.
 
 ## Change Process
 
