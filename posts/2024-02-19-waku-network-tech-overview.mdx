@@ -1,0 +1,172 @@
+---
+layout: post
+name: 'The Waku Network: Technical Overview'
+title: 'The Waku Network: Technical Overview'
+date: 2024-02-19 00:00:00
+authors: [franck]
+published: true
+slug: 2024-waku-network-tech-overview
+categories: waku, technical, network
+image: /img/black-waku-logo-with-name.png
+hide_table_of_contents: false
+---
+
+# The Waku Network - Technical Overview and Properties
+
+<!--
+Goals:
+
+- Introduce the Waku Network: Why, what how
+- Introduce RLN
+- State of things
+- USPs
+- Work moving forward
+-->
+
+Last December [we announced The Waku Network](https://thedefiant.io/waku-launches-first-decentralised-privacy-preserving-dos-protections-for-peer-to-peer-messaging).
+		
+The press release defined the Waku Network as the first decentralised and privacy-preserving network that provides Denial-of-Service (DoS) protections for peer-to-peer messaging. Aiming to enhance privacy and security in peer-to-peer communication by implementing innovative protocols and technologies.
+		
+Let us dig deeper into the why and what the Waku Network is.
+		
+## Origin
+If you have been following Waku or Status, you are likely to be familiar with the origin of Waku.
+The Status mobile app was created to be a web3 super app, a portal to the Ethereum ecosystem that leverages the three original pillars: Ethereum for consensus, Swarm for storage and Whisper for communication.
+		
+The Status development team attempted to build Status with Whisper, but this protocol had fundamental limitations, especially for resource-restricted devices, such as mobile phones.
+		
+Waku was born as a successor of Whisper, learning from its flaws to provide a scalable peer-to-peer communication network fit for mobile and browsers.
+		
+## Challenges / Desired Properties
+		
+Waku aims to overcome the following challenges:
+		
+- Generalised messaging: Waku aims to provide protocols and a network that enables the transfer of arbitrary payloads. While Waku was originally created for a chat application, Status, the aim is to be generalised enough to build any decentralised communication or signalling application on Waku.
+- Ephemeral messaging: Waku aims to solve the problem of real-time communication, which aims to provide fair latency to enable one or several users to exchange small data payloads. This is in contrast to IPFS or other decentralised storage systems, which provide a way to store large amounts of data at the expense of latency and responsiveness.
+- Censorship-resistance: Waku aims to provide a censorship-resistant solution where external actors cannot block users' access to the Waku infrastructure. But also for app developers to be able to build with a _cannot do evil_ mindset where they do not have the key to the kingdom and the ability to deplatform their users.
+- Privacy-minded: To provide the ability for app developers to operate on a _cannot do evil_ principle in terms of data and metadata collection of their users. This means that even if they wanted or were pressured to they, or any third party, could not collect metadata such as social graphs or activity patterns from their users.
+- Anonymity: Similarly to privacy, this is the ability for users to not link Personal Identifiable Information (PII) to their activity on the Waku network or application using the network. PII considered here are in regards to the network (IP address), blockchain (e.g. Ethereum address), and routing (message correlation).
+- Resource-restricted devices: as previously mentioned, when designing Waku, an effort is made to consider environments such as mobile and browser to enable developers to build DApps for these platforms and provide as many of the properties listed above as possible.
+- Scalability: Waku aims to support millions of users while maintaining the principles above; this needs to be thoughtfully designed and tested.
+		
+All the properties above mean that other problems need to be overcome when designing Waku:
+		
+- DOS protection: ensuring that the network cannot be flooded with messages, leading users who have fewer resources to be booted off the network.
+- Network sustainability and incentivisation: How do we ensure enough resources in the network to enable devices such as browsers and mobile devices to access the network?
+- Decentralisation: Waku needs to be decentralised at several levels to enable those properties. How do we maintain a fair level of decentralisation to ensure those properties remain over time?
+		
+## The Waku Network
+		
+How does The Waku Network help deliver the properties above?
+		
+Let us review the different Waku protocols that are combined in the network and how they enable us to achieve this feat.
+		
+### Peer Discovery
+		
+For any peer-to-peer system to be reliable and decentralised, there must be a mechanism to find new peers or nodes in said system, usually called _peer discovery_.
+		
+Waku uses discv5, similar to Ethereum. Minor enhancements to ENR have been done to enable the Waku node to advertise:
+		
+- the shards they are operating in (see [message routing - sharding](#message-routing--sharding))
+	- the protocol they have enabled
+	- alternative multiaddr they may have, e.g., for the browser to connect to the said node via WebSocket.
+		
+Discv5 is decentralised, which can prevent potential sybil attacks where an attacker tries to surround the victim's node to give a manipulated view of the network.
+		
+This helps enable anonymity, privacy, and censorship resistance.
+		
+Thanks to the protocol serviced being advertised, it enables mobile phones and the browser to find nodes that can service them.
+### Message Routing - Gossipsub
+		
+Similar to Ethereum, Waku uses libp2p-gossipsub. This brings several benefits:
+		
+- improved bandwidth performance in comparison to Whisper: in gossipsub, nodes form a group of neighbours (mesh) to which they send messages. A given node will only attempt to maintain connections and actively exchange messages with other nodes. Reducing the number of times each message is uploaded or downloaded.
+- Reliability: gossipsub has built-in redundancy, which gives fair reliability when operating in a decentralised peer-to-peer network, where no node can be trusted to be reliable or well-behaved.
+- Anonymity: as nodes forward messages from other nodes in their mesh, and no metadata is present on individual messages (e.g., no plain text signature), this provides fair anonymity as it is not possible for an observer to know if their neighbour originated or forwarded a message. This works when combined with a decentralised peer discovery mechanism such as discv5.
+		
+We named Waku's usage of gossipsub, the protocol and the network. **Waku Relay.**
+		
+### Message Routing - Sharding
+		
+One of the drawbacks of Gossipsub is that every node in the network receives and sends every message of the network, with some amplification.
+		
+One can see how this limits scalability: it cannot be expected to traffic the whole traffic of the network from a household internet connection.
+		
+To solve this problem, sharding is used instead of having one gossipsub network. The Waku network is subdivided into several distinct message-routing subnetworks, or shards.
+Currently, the Waku network is split into eight shards.
+		
+It means that any user of a Waku application would only relay the traffic of one shard or one-eighth (approximately) of the whole network.
+		
+Eight was a small, arbitrary number to start with. Our theoretical analysis shows that a shard can support around 10k active users while maintaining an average bandwidth requirement of around 4Mbps, meaning 80k for the whole network. We are working on running further simulations to confirm our assumptions. We are also onboarding developers and users on the network to test the theory.
+ The aim is to increase the number of shards in the network over time.
+		
+Thanks to the enhancements made to discv5, nodes can know what shards other peers are servicing before connecting to them.
+		
+### Message Routing - Autosharding
+		
+One issue with sharding is that users and applications must know what shard to use.
+		
+One application could arbitrarily decide what shard they want to use, but that may take a lot of work, especially when adding new shards. It is also one more decision for the developer to make; we prefer to make the developer experience as easy as possible. It also allows developers to build applications that spread on several shards without delegating shard choices to the user.
+		
+Autosharding is a simple protocol that dispatches messages on a shard based on the application.
+### Message Routing - RLN Relay
+		
+Waku is generalised and privacy-preserving, meaning any kind of payload can be transported. Hence, there is no strict definition of "spam". Whether the message contains a [meme](https://github.com/b4s36t4/waku-meme) or a [zk note for private DeFi](https://railgun.ch/#/), Waku shouldn't even know the content; metadata and data should remain private.
+		
+Hence, there is a risk of someone pushing gigabits of data to the network. This can be a problem at different levels:
+		
+- Bandwidth usage: This may lead to a user's bandwidth being hogged and affecting other services (streaming, staking) or a surprise bill.
+- Connectivity: if a node does not have enough bandwidth to send/receive all messages on the gossipsub layer, then their behaviour may be seen as incorrect by other nodes that may disconnect from it.
+- Reliability: If the traffic is higher than the available bandwidth, then a node may not be able to send and receive messages reliably.
+- Other resources: memory usage is correlated with the traffic, and so is disk space for a store service.
+		
+So rather than defining what a "spam" message looks like, we introduced rate limit on the network to enable a fair use of Waku, with a capping of the bandwidth usage per shard.
+		
+This is done with RLN, or Rate Limiting Nullifier, which limits the rate of messages a given publisher sends.
+It is currently set to 1 msg/s. Coupled with a maximum message size (150kB) and a maximum number of publishers (80k, TBD), we can assume a maximum bandwidth usage per shard (around 10Mbps).
+		
+Rate-limiting publishers in a censorship-resistant and private manner is difficult; this is why we are using zero-knowledge technology:
+		
+1. Users push their RLN credentials to a smart contract (currently on Ethereum Sepolia testnet).
+2. Nodes keep track of all registered memberships on the contract.
+3. When sending a message, the user attaches an RLN proof to the message with the current epoch (timestamp in seconds).
+4. Nodes can verify the proof without being able to correlate the user's Ethereum address (used on the smart contract) with the message being sent, preserving anonymity.
+5. If a user attempts to send more than 1 msg/s, nodes can detect this and drop the message surplus or spam, protecting the network.
+
+### Servicing Mostly-offline and Resource-restricted Devices
+Finally, how is Waku useful to resource-restricted devices, such as mobile phones and web browsers?
+Waku defines a number of [request-response protocols (https://rfc.vac.dev/spec/10/#requestreply-domain) to enable such devices to access the Waku network without having to be always online or consume extensive amounts of bandwidth, i.e., without participating in the Waku Relay network.
+The light push protocol (links to docs) enables a _light client_ to send a message to be forwarded to the Waku Relay network, with acknowledgement of reception from the remote node.
+		
+The filter protocol enables a _light client_ to subscribe to a remote peer and only request a subset of messages instead of all messages transmitted on a shard.
+		
+Finally, the store protocol enables _light clients_ and _relay nodes_ to retrieve historical messages that may have been missed.
+		
+## The Waku Network's Value Proposition
+		
+While we have defined the desired properties and the technology, it is important to understand the potential use cases of the Waku Network. This [issue](https://github.com/waku-org/docs.waku.org/issues/134) currently describes several USPs (Unique Value Propositions), and we will be documenting the subject further. Some noteworthy use cases are, beyond building any machine-to-machine or human-to-human communication app:
+		
+- No-Infra DApps: combining various decentralised technologies (Waku, Ethereum, IPFS) to deploy a DApp without paying a centralised hosting provider.
+- Censorship-resistant access to a decentralised network for light clients: using the request-response protocols to enable light clients to access your peer-to-peer network without relying on a centralised, censorable web gateway.
+- Signal network: Use The Waku Network to find other peers and negotiate specific parameters to form your own peer-to-peer, Waku or not, network with different rules (higher rate limit, etc.).
+## Are we _blanlk_ yet?
+		
+We have described Waku's desired properties and how the Waku Network delivers on those. Does it mean Waku is censorship-resistant, private, sustainable, and scalable? *Not quite.*
+		
+Bootstrapping is a component of all peer-to-peer networks we did not address: how does a new node find other nodes in the network? We use Ethereum technology for bootstrapping (ENR + DNS Discovery). However, this technology could be more decentralised. We intend to improve this potential around the end of 2024 or 2025.
+		
+In general, the network needs to be decentralised to achieve the desired properties. While some of the technology enables such decentralisation (and we are working on improving the part that does not), this problem has a social component. If the Waku team is the only one running nodes, then inherently, the network cannot be considered decentralised, and hence censorship-resistant, etc. To solve this, we need to push for the adoption of the Waku network so we can build a good base of node operators and developers that run nodes without depending on the Waku team to do so.
+		
+We increased This effort last year and will continue this year.
+		
+Another aspect is providing monetary incentivisation to node operators to run nodes so the network can become self-sustainable. We do not have such a protocol; we are building the first PoC.
+		
+The Waku Network plays an important role here. Once such a protocol is available, a common (market) place is needed for developers/users and operators to find each other; the Waku Network would be such a place.
+		
+## Conclusion
+		
+Waku aims to enable sovereign communications with specific properties. The Waku Network is a critical milestone towards achieving such a goal and creating a common, decentralisable network on which developers can build, and we can add more protocols.
+		
+While we cannot say that Waku is all it aims to be today, it is already permissionless and decentralisable on several layers.
+		
+We are now working on not only adding the missing pieces to the protocols but also pushing for Waku's adoption to make it de facto decentralised, enabling private & censorship resistance for everyone.
