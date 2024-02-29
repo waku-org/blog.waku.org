@@ -1,0 +1,105 @@
+---
+layout: post
+name: 'February EcoDev Roundup'
+title: 'EcoDev Roundup'
+date: 2024-01-03 00:00:00
+authors: [amelia]
+published: true
+slug: february-roundup
+categories: waku, progress
+image: /img/black-waku-logo-with-name.png
+---
+
+Updates from the EcoDev team in February 2024, plus highlights from the community call.
+
+<!--truncate-->
+
+---
+
+The EcoDev team at Waku covers community, growth, partnerships, and communications. Each month, we will share the key highlights and team progress. You can [subscribe](https://waku.org/subscribe/) to the monthly newsletter if you prefer to receive an abridged version of these updates in your inbox.
+
+
+## Events 
+
+**ETHDenver 23rd February - 3rd March **
+
+The Waku team has been participating in a number of initiatives during ETHDenver. If you're there, there is still time to [schedule a meeting with the team](https://waku.org/events/eth-denver/) to discuss integrating Waku, or to exchange ideas about the future of web3 and privacy. 
+
+Waku Developer Relations Engineer Guru T spoke at the [Workable Web3 Summit](https://lu.ma/workable) yesterday, discussing the importance of designing dApps and protocols which are user-friendly and offer interoperable features. Waku Program Manager Aaron Bendersky will also be speaking at Build Cities' network state side event later today, March 1st. [Check out his panel](https://twitter.com/Waku_org/status/1761007265262325835) ‘Cultural Economics: How Culture Drives Local & Network Economies'.
+
+**ETHLatam 13th - 14th March**
+
+The first hackathon of the year is quickly approaching. Waku is sponsoring ETHLatam from March 13th to 14th with US$2,500 in bounties up for grabs. Each project submission should be private by design, abiding by the values of privacy upheld by Waku. [Read more](https://twitter.com/Waku_org/status/1757425618575376574) on how to participate. 
+
+Guru’s workshop ‘Uncompromising Web3 Communication at Scale with Waku’ will be live-streamed on X March 13th. Ensure you’re [following Waku](https://twitter.com/Waku_org) to catch his workshop-stye deep dive into Waku technology, which includes a live coding session.
+
+**ETHTaipei 21st - 24th March**
+
+During the conference, Waku Protocol Engineer Danish Arora will present on “Bridging the Gap in Decentralised Communications with Waku”. Danish will also be at the [Liberty ZK Hacker House](https://twitter.com/LibertyHouse_1) side event on March 25th, presenting “Leveraging ZK proofs for spam mitigation in a p2p multi-client environment | Waku with RLN.”
+
+
+## Press 
+
+As the communications layer of the Logos technology stack, Waku has properties that will resonate deeply with web3 developers across Latin America who understand how peer-to-peer protocols stand to strengthen the civil liberties of citizens and work to address online censorship. 
+
+See the coverage of Waku's upcoming participation at ETHLatam in [Cointelegraph](https://es.cointelegraph.com/press-releases/waku-advances-in-the-protection-of-communications-privacy-in-latin-america-at-ethlatam) and [Criptonoticias](https://www.criptonoticias.com/comunidad/empresa-recompensa-hackers-ethlatam-2-500-dolares/). You can also listen back to [ETHLatam’s X Space](https://twitter.com/i/spaces/1dRKZEqZXwXxB?s=20) where [Marina](https://twitter.com/Crypto_marina) and [Guru](https://twitter.com/hackyguru) shared insights into how hackers can prepare to build with Waku during the hackathon. 
+
+
+## Content
+
+If you are new to Waku, [ this short intro video](https://www.youtube.com/watch?v=SK5TF3l3XM4) can help you get up to speed on what Waku is and which use cases it suits. Remember to [subscribe](https://www.youtube.com/@waku-org) to the new YouTube channel to be alerted of new content published. 
+
+Since the launch of Bitcoin, people have been calling for a blockchain that can protect the privacy of their transactions. Secret Network and Logos both joined Waku for [an X space](https://twitter.com/i/spaces/1dRKZEVewaNxB?s=20) discussing how to realise privacy-preserving messaging on blockchain using protocols such as Waku. 
+
+The dev team recorded this Waku message [travelling around the world](https://twitter.com/Waku_org/status/1755972110684705142). Five DigitalOcean machines were connected to simulate five hops between Singapore, Bangalore, San Francisco, New York, and Frankfurt.
+
+
+## Research and Development
+
+There is a new [research zone](https://docs.waku.org/research/) on the Waku documentation site. The zone includes insights, benchmarks, and challenges that the Waku team is exploring. Some of the studies available for you to dive deep into include topics such as network incentivisation, capped bandwidth in Waku, and network propagation times. 
+
+The Research and Development team are the minds working to push forward the development of Waku protocols. Here are some of the key highlights from the team last month. 
+
+
+
+* The first version of the RFC on incentivising Waku (light) protocols has been released, with an extra section on the proof-of-concept implementation for Waku Store. [Check out the Github PR](https://github.com/vacp2p/rfc/pull/642) and [Waku Store v3 protocol](https://github.com/waku-org/research/issues/81).
+* nwaku is the reference implementation of the Waku protocol. To enable developers to use the reference implementation in their native application, nwaku needs to expose c-bindings. [Check out the work we’ve started on ](https://github.com/waku-org/nwaku/issues/1332)Python bindings. 
+* Waku latency simulations have been added to a real environment. [Check out the pull request ](https://github.com/waku-org/research/pull/85)and [read the docs](https://docs.waku.org/research/research-and-studies/message-propagation/) on message propagation times with Waku-RLN.
+* Waku Relay is responsible for disseminating messages but cannot guarantee delivery. The push-based propagation (PubSub) of Relay can be augmented with a pull-based method, in our case Sync. [Check out the Waku sync overview first draft](https://github.com/waku-org/research/issues/80).
+
+
+---
+
+
+## **Waku Community Call and AMA**
+
+Waku hosts a Community Call on X during the last week of each month. The objective of the call is to update the community on progress and provide a space where questions can be put directly to the team.
+
+The February Community Call took place last week on the 28th of January. You can [listen back to the full Space](https://twitter.com/i/spaces/1lDxLPQrqgoxm/peek), and read the highlights below.
+
+[Guru](https://twitter.com/hackyguru), and [Danish](https://twitter.com/danisharora099) from the Waku team led the call.
+
+
+### nwaku node campaign
+
+Guru announced several initiatives for Waku node runners. Anyone who is running an nwaku node is invited to post a photo on X tagging @waku_org and using #ProofOfNode. Waky will share your post and give you a shoutout. He also announced that they were working on early-stage node operator and onboarding programs that will be formally announced in the coming weeks. Currently, the Wak team is collecting feedback from operators on their experience setting up a node; [drop a message on Discord](https://discord.com/invite/gMPAzmcDER) to leave any feedback you may have. 
+
+
+### Does the current js waku support React Native?
+
+Libp2p, the modular network stack and protocol suite that Waku is built on top of, recently added support for React native. However, while it is technically enabled, the team has not been able to test it on Waku yet and as so Waku does not officially support it. Testing is on the roadmap for 2024. For now, we provide C bindings which should make it possible for mobile developers to use Waku. Find what you need in the [Guides](https://docs.waku.org/) section of the documentation site. 
+
+
+### What encryption methods are currently available in the Waku library? 
+
+The team strives to keep Waku as unopinionated as possible, so encryption and decryption of payloads are left for application layer developers to choose from. That said, the option of using Noise is offered.
+
+
+---
+
+That is it for this month’s Eco Dev roundup!
+
+If you have questions about what the team has been doing or want to join a like-minded community focused on bringing peer-to-peer communications to millions of users, join the Waku [Discord](https://discord.com/invite/gMPAzmcDER) or follow us on [X](https://twitter.com/Waku_org).
+
+[Subscribe](https://waku.org/subscribe/) to the monthly newsletter for these updates directly in your inbox.
+
