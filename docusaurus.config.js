@@ -21,6 +21,15 @@ const config = {
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
+    path: 'i18n',
+    localeConfigs: {
+      en: {
+        path: 'en',
+      },
+      es: {
+        path: 'es',
+      },
+    },
   },
 
   presets: [
@@ -35,12 +44,7 @@ const config = {
             customCss: [require.resolve('./src/css/custom.scss')],
           },
         },
-        docs: {
-          id: 'Docs',
-          routeBasePath: '/docs',
-          remarkPlugins: [math],
-          rehypePlugins: [katex],
-        },
+        docs: false,
         og: {},
       }),
     ],
@@ -53,6 +57,20 @@ const config = {
         id: 'blog',
         routeBasePath: '/',
         path: 'posts',
+        blogTitle: 'Waku Blog',
+        blogSidebarCount: 0,
+        authorsMapPath: 'authors.yml',
+        remarkPlugins: [math],
+        rehypePlugins: [katex],
+      }),
+    ],
+    [
+      '@docusaurus/plugin-content-blog',
+      /** @type {import('@docusaurus/plugin-content-blog').PluginOptions} */
+      ({
+        id: 'es-blog',
+        routeBasePath: '/es',
+        path: 'i18n/es',
         blogTitle: 'Waku Blog',
         blogSidebarCount: 0,
         authorsMapPath: 'authors.yml',

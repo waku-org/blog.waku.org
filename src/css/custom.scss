@@ -15,3 +15,37 @@ html {
 .table-of-contents {
   display: none;
 }
+
+.hidden {
+  display: none !important;
+}
+
+.dropdown__link {
+  a {
+    text-decoration: none !important;
+  }
+}
+
+.navbar__right-items {
+  .dropdown--right {
+    * {
+      text-decoration: none !important;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .navbar__right-items {
+    .dropdown--right {
+      border-right: none;
+    }
+  }
+}
+
+@media screen and (max-width: 996px) {
+  .navbar-sidebar__item {
+    .menu__link--active {
+      box-shadow: none;
+    }
+  }
+}
