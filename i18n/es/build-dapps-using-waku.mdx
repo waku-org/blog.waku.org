@@ -1,0 +1,255 @@
+---
+layout: post
+name: 'Cree una dApp con Waku'
+title: 'Cree una dApp con Waku'
+date: 2024-03-04 00:00:00
+authors: amelia
+published: 
+slug: build-dapps-using-waku
+image: /img/black-waku-logo-with-name.png
+sidebar_class_name: hidden
+---
+
+**TL;DR**
+
+¿Sabías que, más allá de ser una mera palabra de moda en el sector, la comunicación descentralizada representa una respuesta estratégica a las vulnerabilidades inherentes de los sistemas centralizados? Da prioridad a la privacidad, la seguridad y la resistencia a la censura, lo que la convierte en un componente indispensable en el conjunto de herramientas de los desarrolladores web.
+
+<!--truncate-->
+
+Los sistemas de comunicación centralizados tradicionales han luchado durante mucho tiempo contra la censura, los puntos únicos de fallo y los problemas de privacidad. Con el auge de la Web 3 y la tecnología blockchain, las soluciones de comunicación descentralizadas como Waku se perfilan como una alternativa prometedora. Waku ofrece un sistema de mensajería peer-to-peer (P2P) que es resistente a la censura, escalable y seguro, por lo que es una opción ideal para los desarrolladores de dApps que buscan construir aplicaciones de próxima generación.
+
+Este artículo te guiará sobre cómo construir una aplicación descentralizada (dApp) utilizando Waku, un protocolo de comunicación descentralizado sin compromisos, y Vue.js, un popular marco de JavaScript para la construcción de interfaces de usuario. Antes de sumergirse en los aspectos prácticos de desarrollo de este artículo, se recomienda que tenga una comprensión básica de Vue.js, familiaridad con Tailwind CSS para el estilo de interfaz de usuario, y una comprensión de web3.js para la integración de la cartera sin problemas.
+
+**¿Qué es Waku?**
+
+Waku es un conjunto de protocolos de mensajería peer-to-peer descentralizados que permiten una comunicación segura y resistente a la censura a través de una red descentralizada. Sus características incluyen el cifrado de extremo a extremo, la mensajería persistente/efímera y el descubrimiento eficiente de pares, proporcionando una base para la comunicación segura y fiable.
+
+Waku funciona dentro de una topología entre pares, creando una red descentralizada que frustra la censura y proporciona resistencia a la vigilancia. Su diseño permite la escalabilidad, con capacidad para millones de usuarios. Está diseñado para ser el sucesor de Whisper, la capa de mensajería del conjunto de protocolos P2P de la cadena de bloques Ethereum, y lo supera en escalabilidad y eficiencia de recursos.
+
+La arquitectura de Waku se basa en tres dominios de interacción de red distintos: cotilleo, descubrimiento y solicitud/respuesta. Aunque Waku es un todo cohesivo en términos de capacidades, abarca tres clientes principales diseñados para diferentes entornos y varios SDK, incluidos Rust, React Native, Kotlin y Swift.
+
+
+
+* nwaku: La implementación de referencia en Nim.
+* go-waku: Adaptado para la integración nativa con aplicaciones Golang.
+* js-waku: Una implementación de JavaScript optimizada para entornos de navegador.
+
+Waku consta de múltiples protocolos, cada uno de los cuales cumple una función específica dentro de la red. Incluyen, entre otros
+
+
+
+* Waku Relay: La columna vertebral de la red Waku, que emplea un enfoque pub/sub a la mensajería peer-to-peer. Hace hincapié en la privacidad, la resistencia a la censura y la seguridad, ampliando el protocolo libp2p GossipSub.
+* Waku Filter: Versión ligera del protocolo de retransmisión diseñada para dispositivos con recursos limitados. Permite a los nodos ligeros recibir mensajes específicos de interés de los nodos completos.
+* Waku Store: Facilita la recuperación de mensajes para los dispositivos que no pueden participar en la red Waku Relay mientras están desconectados.
+* Waku Light Push: Un protocolo de solicitud/respuesta que permite a los nodos con ventanas de conexión cortas o ancho de banda limitado publicar mensajes en la red Waku.
+
+
+Comprender la arquitectura y los protocolos de Waku sienta las bases para proceder a implementaciones prácticas.
+
+**Casos de uso de Waku**
+
+La versátil arquitectura y capacidades de Waku son relevantes en una gran variedad de escenarios del mundo real en los que la comunicación segura y descentralizada es primordial. Ya se trate de facilitar conversaciones privadas entre usuarios, permitir el intercambio de datos entre dispositivos o soportar la comunicación entre nodos dentro de una red, Waku emerge como una solución robusta.
+
+
+
+* Comunicación centrada en la privacidad
+
+El énfasis de Waku en la privacidad lo convierte en una opción ideal para escenarios en los que salvaguardar la información del usuario es de suma importancia. En aplicaciones que tratan con datos sensibles o conversaciones confidenciales, el cifrado de extremo a extremo de Waku y su arquitectura descentralizada proporcionan un entorno seguro, mitigando los riesgos asociados a las plataformas de comunicación centralizadas.
+
+
+
+* Mensajería resistente a la censura
+
+Waku ofrece una luz de esperanza para la comunicación sin restricciones en regiones donde prevalece la censura en Internet. Su topología peer-to-peer impide que las autoridades centralizadas controlen o supervisen el tráfico de mensajería, garantizando que los usuarios puedan comunicarse libremente sin temor a la censura. Esto hace que Waku sea especialmente valioso para promover la libertad de expresión y apoyar canales de comunicación abiertos.
+
+
+
+* Uso en dApps para comunicación descentralizada
+
+Las aplicaciones descentralizadas (dApps) forman un ecosistema floreciente en el que Waku puede desempeñar un papel fundamental. La integración de Waku en las dApps mejora las funcionalidades de comunicación, permitiendo interacciones en tiempo real entre los usuarios mientras se mantiene el espíritu descentralizado. Esto resulta especialmente valioso en escenarios como las plataformas colaborativas, las redes sociales o cualquier aplicación en la que la participación y comunicación de los usuarios sean componentes centrales.
+
+Al explorar las características y capacidades de Waku, se hace evidente que la aplicabilidad de Waku va más allá de las ventajas teóricas, encontrando aplicación práctica en diversas áreas.
+
+**Creación de una dApp con Waku y Vue.js**
+
+Los sistemas de sondeo a menudo se enfrentan a retos relacionados con la centralización, las preocupaciones por la privacidad y la susceptibilidad a la manipulación. Mediante la integración de Waku y Vue.js, podemos hacer frente a estos desafíos, creando una aplicación de votación descentralizada que aprovecha el poder de la comunicación peer-to-peer.
+
+Aquí está el código fuente completo de aplicación de votación en GitHub: [https://github.com/wolz-CODElife/waku-vue-poll](https://github.com/wolz-CODElife/waku-vue-poll) y [la aplicación en vivo](https://waku-vue-poll.vercel.app/) está alojada en Vercel.
+
+
+Herramientas de desarrollo utilizadas: 
+
+
+
+* **Vite:** Para arrancar la aplicación Vue3 con la plantilla Tailwind.
+* **Vue 3:** Para construir la interfaz de usuario.
+* **TypeScript:** Para la seguridad de tipos y la posibilidad de detectar errores durante la compilación.
+* **Tailwind CSS:** Para dar estilo a la interfaz de usuario.
+* **Web3.js:** Para implementar wallet connect.
+* **Plugin Node Polyfill Webpack**: Para proporcionar polyfills necesarios para emitir eventos Web3.js en el navegador. Dado que Vue3 usa webpack v5, donde los módulos polyfill del núcleo de Node fueron eliminados.
+* **Crypto Hash: **Para generar la dirección del usuario, cuando no hay una cartera de crypto disponible.
+* **Protobufjs:** Para serializar datos de mensajes enviados a través de Waku.
+* **@waku/sdk: **Para acceder a los métodos del nodo Waku en JavaScript.
+
+**Configuración del entorno de desarrollo**
+
+Para configurar tu entorno de desarrollo, asegúrate de que tienes Node v18+, abre una nueva terminal en tu directorio de trabajo y ejecuta el siguiente comando:
+
+Lo que iniciará un diálogo en la terminal, puedes elegir las opciones que te sirvan, o utilizar las mismas opciones que yo utilicé:
+
+Esto debería crear una nueva aplicación Vue en tu directorio de trabajo. Navega a la aplicación, instala las dependencias por defecto e inicia la aplicación usando el siguiente comando:
+
+A continuación, queremos crear una estructura de archivos que nos permita separar en componentes las distintas partes de la aplicación. Tu ruta src debería tener una estructura de archivos como esta:
+
+
+
+A medida que avancemos iremos actualizando los archivos con el código necesario. En cuanto a assets/3dpoll.jpg siéntete libre de sustituirlo por cualquier imagen que veas adecuada para tu landing page.
+
+**Configuración de Tailwind en Vue.js**
+
+Para construir nuestra interfaz de usuario, primero tenemos que instalar y configurar el CSS de Tailwind en Vue 3. Puedes seguir la guía oficial sobre [Configuración de Tailwind CSS.](https://v2.tailwindcss.com/docs/guides/vue-3-vite#setting-up-tailwind-css)
+
+**Configuración de rutas**
+
+Para crear múltiples páginas/rutas en la aplicación, tenemos que instalar Vue Router ejecutando el siguiente comando en el terminal:
+
+En esta aplicación, sólo necesitamos dos rutas: "Home" y "Polls", las cuales tenemos dentro de la carpeta src/views. Estas rutas contendrán el Layout de cada página, y luego podremos definir las rutas en el archivo src/router/index.ts usando el siguiente código:
+
+En el fragmento de código anterior, se define una configuración de enrutador Vue.js. Importamos las funciones y tipos necesarios de 'vue-router' y el componente Home de @/views/Home.vue.
+
+El array routes contiene definiciones de rutas para los componentes Home y Polls. El enrutador se crea usando las funciones createRouter y createWebHistory, y las rutas que definimos anteriormente.
+
+El componente: () => import('../views/Polls.vue') se utiliza para importar dinámicamente el componente 'Polls.vue'. Se trata de una funcionalidad de Vue.js que permite cargar el componente de forma asíncrona cuando es necesario, lo que puede ayudar a mejorar el rendimiento inicial de carga de la página al dividir el código en trozos más pequeños.
+
+Finalmente, el router se exporta para que podamos acceder a él en "main.ts".
+
+A continuación, registramos el enrutador en la aplicación Vue incluyéndolo en el archivo "main.ts" de la siguiente manera:
+
+A continuación, crearemos un Layout para nuestra aplicación con lo siguiente dentro de "App.vue":
+
+En el código anterior, utilizamos router-view para cargar dinámicamente los componentes de la ruta actual en el DOM.
+
+Instalación de Waku y sus dependencias
+
+Para empezar a utilizar Waku en nuestra aplicación Vue 3, necesitamos instalar @waku/sdk que es una implementación en TypeScript del protocolo Waku diseñada para entornos de navegador web.
+
+Para instalar @waku.sdk ejecuta el siguiente comando en el terminal:
+
+También se recomienda crear una estructura de mensajes para tu aplicación, normalmente los desarrolladores de Waku utilizan [Protocol Buffers](https://protobuf.dev/) por coherencia, interoperabilidad, compatibilidad y tamaño de la carga útil. Para instalar protobufjs, ejecuta el siguiente comando en el terminal:
+
+**Implementación de la lógica Waku**
+
+La aplicación se ejecuta sobre dos lógicas fundamentales, que son las integraciones de wallet connect y Waku communication. Crearemos dos composables "waku.ts" y "client.ts" dentro de src/composables.
+
+"waku.ts" contiene todos los métodos que nuestra aplicación Vue necesita para interactuar con el protocolo Waku y transmitir mensajes (encuestas) entre los usuarios de la aplicación. Dentro de este archivo, deberías tener el siguiente código:
+
+El código anterior permite la interacción con la red Waku, posibilitando la creación y participación en encuestas dentro de una aplicación Vue.
+
+En primer lugar, importamos las funciones necesarias y definimos la estructura de datos utilizando interfaces de TypeScript para establecer un estándar para PollOption, PollMessage y Poll. Estas estructuras representan las preguntas y opciones disponibles en una encuesta y la estructura general de una encuesta, respectivamente.
+
+Se definen variables reactivas (estado, remitente y sondeos) para realizar un seguimiento del estado de la conexión, la información del remitente y la lista de sondeos. Estas variables serán necesarias para actualizar la aplicación Vue en respuesta a los cambios en la red Waku.
+
+_Fíjate en que no hemos hecho que WakuNode o cualquier variable que interactúe con la red Waku sea directamente reactiva. Como esto desencadenaría el[ problema #1746 ](https://github.com/waku-org/js-waku/issues/1746)debido a que los nodos Waku son demasiado complejos para que los mecanismos de Vue los manejen, tenemos que mantener la instancia WakuNode fuera del ámbito reactivo de Vue._
+
+La conexión WakuNode se establece utilizando la función createLightNode, optimizando el uso de recursos mediante la creación de un nodo ligero de Waku. Este nodo se conecta a la red Waku y espera a que los peers se unan utilizando los protocolos[ LightPush](https://rfc.vac.dev/spec/19/) y [Filter](https://rfc.vac.dev/spec/12/). Hemos definido un[ Content Topic](https://docs.waku.org/learn/concepts/content-topics/)específico para esta aplicación para categorizar los mensajes, el cual debe tener el siguiente formato:/{application-name}/{version}/{content-topic-name}/{encoding}. Asegúrate de reemplazar WAKU_CONTENT_TOPIC con tu propio Content Topic. Por otro lado, Protobuf se utiliza para codificar y decodificar mensajes de manera eficiente para adaptarse a la estructura de mensajes PollQuestionWakuMessage.
+
+Después de conectarse a la red Waku, el siguiente paso es interactuar. Hemos creado una función llamada useWaku() que encapsula y devuelve todas las variables y métodos necesarios para interactuar con Waku en toda la aplicación.
+
+En primer lugar, tenemos la función start() que inicia la conexión de WakuNode, espera a que los peers se conecten y se suscribe al Content Topic elegido, antes de actualizar el estado del usuario a status.value = "connected".
+
+A continuación, tenemos la función stop() que cancela la suscripción al Content Topicy detiene el WakuNode, antes de actualizar el estado del usuario a status.value = "not connected".
+
+A continuación, tenemos la función subscribe() que crea una suscripción al Content Topic utilizando Waku Filter, recibe los mensajes de sondeo entrantes, los decodifica y actualiza la lista de sondeos. La función handleSubscriptionResult decodifica los mensajes de sondeo entrantes, comprueba si hay duplicados y actualiza la lista de sondeos de forma apropiada.
+
+A continuación, tenemos la función unsubscribe() que desconecta la aplicación del Content Topic.
+
+Por último, la función publish() acepta los parámetros necesarios para crear un nuevo mensaje de sondeo y enviarlo codificado a la red Waku mediante el protocolo LightPush.
+
+**Implementación de la lógica wallet connect**
+
+La variable sender en el composable “waku.ts” guarda la dirección de la cartera conectada. Para poder implementar wallet connect, necesitamos primero instalar “Web3.js” ejecutando el siguiente comando en la terminal:
+
+Dado que Vue 3 utiliza webpack v5, necesitamos instalar Node Polyfill Webpack Plugin para proporcionar los polyfills necesarios para emitir eventos Web3.js en el navegador. Ejecuta el siguiente comando en la terminal para instalar el plugin Node Polyfill Webpack:
+
+Luego inclúyelo en "vite.config.ts" para que tu "vite.config.ts" se vea así:
+
+Notarás que también estamos soportando top-level-await, esto es porque estamos instanciando WakuNode en un nivel superior y la compilación de Vite no soporta esto.
+
+Dentro del "client.ts" tendremos el siguiente código:
+
+El código anterior permite a los usuarios conectar su cartera de crypto a la aplicación como medio de identificación. En este escenario, utilizamos la dirección de la cartera como remitente del sondeo.
+
+Sin embargo, algunos usuarios pueden no tener carteras y no queremos limitar la aplicación sólo a los usuarios que tienen carteras de crypto. Para solucionar esto, creamos la función generateUniqueID() para formar un hash aleatorio a partir de la dirección navigator.userAgent del navegador del usuario. Luego almacenamos la dirección del remitente en localStorage como "'senderWalletAddress'".
+
+También creamos una función disconnectWallet() para eliminar la dirección de la cartera del localStorage y detener la ejecución del WakuNode.
+
+Para demostrar la propiedad de los sondeos, los usuarios tienen que firmar cada mensaje de sondeo utilizando su cartera, para ello se ejecuta la función signMessage.
+
+El composable useWalletConnect encapsula y devuelve las funciones connectWallet, disconnectWallet y signMessage para que sean accesibles a través de la aplicación.
+
+**Construir los componentes de la interfaz de usuario**
+
+Ahora que tenemos nuestra lógica, podemos construir la interfaz de usuario para utilizar los datos y métodos en nuestros composables.
+
+Tenemos 3 componentes principales en esta aplicación, la NavBar, Home y Polls. Siéntete libre de crear tu propia interfaz de usuario o utilizar la mía:
+
+
+
+* [NavBar](https://github.com/wolz-CODElife/waku-vue-poll/blob/master/src/components/NavBar.vue): src/components/NavBar.vue
+* [Inicio:](https://github.com/wolz-CODElife/waku-vue-poll/blob/master/src/views/Home.vue) src/views/Home.vue
+* [Encuestas](https://github.com/wolz-CODElife/waku-vue-poll/blob/master/src/views/Polls.vue): src/views/.vue
+
+**Creación de encuestas**
+
+Si revisas el código de mi componente NavBar, encontrarás que tenemos una ref llamada poll:
+
+Esta referencia es actualizada por el formulario modal, y al enviarlo, activamos la función sendMessage:
+
+En el código anterior, convertimos a string los datos de la encuesta que incluye la pregunta, y las opciones para que podamos publicar la encuesta como un mensaje a Waku. A continuación, creamos un msgid y una marca de tiempo para el mensaje, antes de utilizar la cartera del usuario para firmar el mensaje. Una vez firmado el mensaje, llamamos a la función waku.publish(waku.sender.value, stringifiedMessage) para mandar la actualización a los usuarios suscritos al Content Topic.
+
+Votación en tiempo real y sondeo de resultados
+
+En el componente "Poll.vue", tenemos una función handleVote():
+
+Esta función se activa cuando se pulsa  el botón de radio de cualquier opción. Esta función recoge el msgid y el selectedOption como parámetros. A continuación, llama a la función subscribe() para obtener la última versión de las encuestas, antes de actualizar el recuento de votos de una opción en la encuesta que tiene el msgid.
+
+Creamos una copia reactiva del sondeo para que la actualización del recuento de votos se refleje aunque cambie el estado. Luego publicamos la copia reactiva, que enviará los resultados actualizados de la encuesta a todos los usuarios que estén suscritos al Content Topic de esta aplicación.
+
+Para realizar un seguimiento de las encuestas que un usuario ha votado, almacenamos una matriz "votePolls" en el localStorage.
+
+Siéntete libre de jugar con la funcionalidad y optimizar el rendimiento para satisfacer las necesidades de tu aplicación.
+
+**Resumen del artículo**
+
+En estaguía exhaustiva, nos embarcamos en un viaje para integrar Waku, un protocolo de comunicación descentralizado, en una aplicación Vue.js, creando una dApp de votación en tiempo real. Recapitulemos los puntos claves de la guía:
+
+**Entendiendo Waku**
+
+
+
+* Exploramos Waku como una familia de protocolos que facilitan las comunicaciones privadas y resistentes a la censura a través de una red descentralizada.
+* Examinamos las características de Waku, su arquitectura y su enfoque en la privacidad, la descentralización y la adaptabilidad a diversas plataformas.
+* Analizamos los diferentes componentes de Waku, como Waku Relay, Waku Filter, Waku Store y Waku Light Push.
+
+**Casos de uso de Waku**
+
+
+
+* Analizamos escenarios del mundo real en los que Waku resulta muy valioso, haciendo hincapié en su papel en la comunicación centrada en la privacidad, la mensajería resistente a la censura y la comunicación descentralizada dentro de las dApps.
+
+**Creación de una dApp con Waku y Vue.js**
+
+
+
+* Configuramos una aplicación Vue.js utilizando Vite y Tailwind CSS.
+* Establecimos una conexión a la red Waku, implementamos la autenticación de monedero usando Web3.js, e integramos el @waku/sdk para la comunicación descentralizada.
+* Demostramos el proceso paso a paso de construir una encuesta de votación en tiempo real, conectándonos a la red Waku.
+
+Al concluir esta guía, considera realizar las siguientes acciones para seguir explorando y experimentando con Waku:
+
+
+
+* **Documentación de Waku:** Visita la[ documentación de Waku ](https://docs.waku.org/)para profundizar en las funcionalidades, protocolos y casos de uso de Waku.
+* **Experimenta con funcionalidades adicionales:** Amplía las capacidades de tu dApp experimentando con funcionalidades adicionales proporcionadas por Waku. Explora características como mensajería efímera, almacenamiento descentralizado y más para mejorar sus aplicaciones descentralizadas.
+* **Únete a la Comunidad Waku:** Participa con la comunidad[ Waku](https://waku.org/community/) en foros, redes sociales o canales de desarrolladores. Conéctate con desarrolladores afines, comparte tus experiencias y mantiénete actualizado sobre los últimos desarrollos dentro del ecosistema Waku.
+* **Contribuye a Waku:** Considera la[ posibilidad de contribuir al proyecto Waku](https://waku.org/about/team/) en plataformas como GitHub. Ya sea informando de problemas, enviando pull requests o sugiriendo mejoras, tus contribuciones pueden desempeñar un papel vital en el crecimiento de este protocolo de comunicación descentralizado
