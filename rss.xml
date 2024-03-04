@@ -4,10 +4,18 @@
         <title>Waku Blog</title>
         <link>https://waku.org/</link>
         <description>Waku Blog</description>
-        <lastBuildDate>Thu, 01 Feb 2024 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 04 Mar 2024 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Build a dApp Using Waku]]></title>
+            <link>https://waku.org/build-dapps-using-waku</link>
+            <guid>https://waku.org/build-dapps-using-waku</guid>
+            <pubDate>Mon, 04 Mar 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Read in Spanish]]></description>
+            <content:encoded><![CDATA[<a href="/es/build-dapps-using-waku"><button class="lsd-button lsd-button--medium lsd-button--outlined"><span class="lsd-button__text">Read in Spanish</span></button></a><br><br><p><strong>TL;DR</strong></p><p>Did you know that far beyond being a mere industry buzzword, decentralized communication represents a strategic response to the vulnerabilities inherent in centralized systems? It prioritizes privacy, security, and censorship resistance, making it an indispensable component in web developers' toolkits.</p><p>Traditional centralized communication systems have long struggled with censorship, single points of failure, and privacy concerns. With the rise of Web 3 and blockchain technology, decentralized communication solutions like Waku are emerging as a promising alternative. Waku offers a peer-to-peer (P2P) messaging system that is resilient to censorship, scalable, and secure, making it an ideal choice for dApp developers looking to build next-generation applications.</p><p>This article will guide you on how to build a decentralized application (dApp) using Waku, an uncompromising decentralized communication protocol, and Vue.js, a popular JavaScript framework for building user interfaces. Before diving into the hands-on development aspects of this article, it is recommended that you have a basic understanding of Vue.js, familiarity with Tailwind CSS for UI styling, and a grasp of web3.js for seamless wallet integration.</p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[January EcoDev Roundup]]></title>
             <link>https://waku.org/january-ecodev</link>
