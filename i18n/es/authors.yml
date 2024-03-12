@@ -61,3 +61,8 @@ guru:
   name: 'Guru'
   twitter: '@hackyguru'
   github: 'hackyguru'
+
+joel:
+  name: 'Joel Adewole'
+  twitter: '@wolz_codelife'
+  github: wolz-CODElife
