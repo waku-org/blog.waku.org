@@ -120,10 +120,10 @@ Hence, there is a risk of someone pushing gigabits of data to the network. This 
 - Reliability: If the traffic is higher than the available bandwidth, then a node may not be able to send and receive messages reliably.
 - Other resources: memory usage is correlated with the traffic, and so is disk space for a store service.
 		
-So rather than defining what a "spam" message looks like, we introduced rate limit on the network to enable a fair use of Waku, with a capping of the bandwidth usage per shard.
+So rather than defining what a "spam" message looks like, we introduced a rate limit on the network to enable a fair use of Waku, with a capping of the bandwidth usage per shard.
 		
 This is done with RLN, or Rate Limiting Nullifier, which limits the rate of messages a given publisher sends.
-It is currently set to 1 msg/s. Coupled with a maximum message size (150kB) and a maximum number of publishers (80k, TBD), we can assume a maximum bandwidth usage per shard (around 10Mbps).
+It is currently set to 1 msg/s. Coupled with a maximum message size (150kB) and a maximum number of publishers (80k, TBD), we can assume a maximum bandwidth usage per shard of [around 10Mbps](https://docs.waku.org/research/research-and-studies/capped-bandwidth). Read more about the maximum bandwidth [here](https://docs.waku.org/research/research-and-studies/maximum-bandwidth).
 		
 Rate-limiting publishers in a censorship-resistant and private manner is difficult; this is why we are using zero-knowledge technology:
 		
