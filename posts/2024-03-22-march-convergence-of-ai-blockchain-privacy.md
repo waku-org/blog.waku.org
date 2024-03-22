@@ -19,7 +19,7 @@ An overview of the need for decentralised and privacy-preserving artificial inte
 <figure>
     <img src="/img/ai-waku.png"
          alt="header-image" />
-    <figcaption>Image generated using MidJourney.</figcaption>
+    <figcaption>Image generated with MidJourney</figcaption>
 </figure>
 
 <br />
