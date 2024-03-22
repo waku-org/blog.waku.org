@@ -1,15 +1,15 @@
 {
-    "timestamp": "2024-03-22T09:38:37Z",
+    "timestamp": "2024-03-22T09:40:23Z",
     "git": {
-        "commit": "ed2e7d3219421cd708fd878be2cc1721dce41400",
+        "commit": "5e4a01cee0ef158800bf445e12d66522208e31de",
         "branch": "origin/develop",
         "url": "git@github.com:waku-org/blog.waku.org.git"
     },
     "build": {
-        "id": "63",
-        "number": "63",
+        "id": "64",
+        "number": "64",
         "name": "website/dev-blog.waku.org",
         "slave": "linux-02",
-        "url": "https://ci.infra.status.im/job/website/job/dev-blog.waku.org/63/"
+        "url": "https://ci.infra.status.im/job/website/job/dev-blog.waku.org/64/"
     }
 }
