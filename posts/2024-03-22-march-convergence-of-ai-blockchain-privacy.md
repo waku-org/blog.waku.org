@@ -16,7 +16,12 @@ An overview of the need for decentralised and privacy-preserving artificial inte
 
 ---
 
-![header](/img/ai-waku.png)
+<figure>
+    <img src="/img/ai-waku.png"
+         alt="header-image" />
+    <figcaption>Image generated with MidJourney</figcaption>
+</figure>
+
 <br />
 After the recent boom in the generative artificial intelligence (AI) space, several critics have questioned the convergence of AI and web3. There is also a growing misconception that web3 does not have native use cases within the AI space. Indeed, some are popularising an unfounded argument that web3 is being forced into the AI space. This blog post will explore the need for an intersection between these cutting-edge technologies and some potential use cases where we can implement a technology like [Waku](https://waku.org/) in AI-related areas.
 
