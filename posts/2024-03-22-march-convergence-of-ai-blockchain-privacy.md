@@ -101,3 +101,4 @@ Waku has a huge potential to create an everlasting impact on the AI space. Waku 
 ### **Some closing words**
 
 The use cases mentioned above are just a few examples of where Waku can add value within the AI space. So many areas are yet to be explored, and the Waku team is on hand to help AI projects integrate a privacy-preserving communications infrastructure. [Reach out to the Waku team](https://discord.waku.org/) if you're interested in learning more!
+
