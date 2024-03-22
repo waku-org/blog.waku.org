@@ -30,9 +30,9 @@ After the recent boom in the generative artificial intelligence (AI) space, seve
 
 I have always believed that web3 is not 'just' about blockchains but extends to the broader idealogy of building censorship-resistant infrastructure with privacy-preserving technologies.
 
-We often only understand the need for such ethos once we get exposed to the problems that hinder innovation through censorship. A perfect example of this scenario is a recent [statement from the Government of India's IT Minister](https://timesofindia.indiatimes.com/gadgets-news/government-to-tech-companies-take-permission-before-launching-ai-models-in-india/articleshow/108167769.cms), Rajeev Chandrasekhar.
+We often only understand the need for such ethos once we get exposed to the problems that hinder innovation through censorship. A perfect example of this scenario is a recent [statement from an Indian government official](https://timesofindia.indiatimes.com/gadgets-news/government-to-tech-companies-take-permission-before-launching-ai-models-in-india/articleshow/108167769.cms).
 
-Chandrasekhar stated that with new regulations and compliance requirements faced by the artificial intelligence space, GenAI domain experts are looking to web3 for solutions. AI innovators are turning to permissionless and privacy-preserving technologies to distribute their model deployments and avoid being censored.
+The government official stated that with new regulations and compliance requirements faced by the artificial intelligence space, GenAI domain experts are looking to web3 for solutions. AI innovators are turning to permissionless and privacy-preserving technologies to distribute their model deployments and avoid being censored.
 
 
 ## The role of a privacy-preserving communications protocol in AI
