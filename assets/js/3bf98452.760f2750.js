@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkblog_waku_org=self.webpackChunkblog_waku_org||[]).push([[579],{74033:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[]}')}}]);
