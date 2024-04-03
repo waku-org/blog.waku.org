@@ -1,0 +1,104 @@
+# March Progress Report
+
+
+---
+
+Highlights from the Waku team’s progress in March 2024.
+
+
+---
+
+Welcome to the monthly Waku progress report. The EcoDev group at Waku covers community, growth, partnerships, and communications. The Research and Development group covers the academic and engineering research that supports Waku’s development, as well as the core team of Waku engineers building the protocols. Each month, we will share the key highlights and progress of the teams. You can [subscribe](https://waku.org/subscribe/) to the monthly newsletter if you prefer to receive an abridged version of these updates in your inbox. 
+
+
+# Events
+
+**ETHLatam 13th - 14th March**
+
+Waku sponsored ETHLatam with US$2,500 in prizes for hackers who created privacy-preserving solutions using Waku. Developer Relations Engineer Guru also gave a hands-on workshop that served as an introduction to Waku. The Waku team gave one-to-one support to the hackers, who were also gifted limited edition Waku swag.
+
+Congratulations to the ETHLatam hackathon bounty winners, [EduChain](https://twitter.com/Waku_org/status/1772530541859885160)! The team developed a privacy-focused platform for maintaining and accessing academic records.
+
+**ETHTaipei 21st - 24th March**
+
+Waku Protocol Engineer Danish [delivered two excellent talks](https://twitter.com/Waku_org/status/1772284941117562935?utm_source=%7C%7CTEST+3%7C%7C+See+you+i...+%28Mass+Mailing+created+on+2024-04-03%29+%5B7%5D&utm_medium=Email) in Taipei. At ETHTaipei, Danish presented on “Bridging the Gap in Decentralised Communications with Waku”. He also spoke at the Liberty ZK Hacker House side event on the 25th of March, presenting “Leveraging ZK proofs for spam mitigation in a p2p multi-client environment | Waku with RLN.” 
+
+Thank you to everyone in attendance for the great reception and openness to learning about privacy-first peer-to-peer communications. 
+
+**ETHDam 12th - 14th April**
+
+Our next stop is ETHDam! Waku has €2,000 in bounty prizes for hackers who submit the best use of Waku. If you are attending ETHDam, there is still time to [schedule a meeting with the team](https://waku.org/events/ethdam/) to discuss integrating Waku or to exchange ideas about the future of web3 and privacy.
+
+**Privacy in the Age of AI: DarkFi, Logos & Waku Roundtable**
+
+Waku and Logos co-hosted an X Space with Lunar Mining of DarkFi. The speakers discussed how to prevent a future where privacy becomes a luxury accessible only to those who can afford it while the rest of society becomes increasingly exposed to the scrutiny of AI surveillance. You can [listen back](https://twitter.com/Waku_org/status/1773017040166535486) to the Space.
+
+
+# Reads and tutorials
+
+The Waku Network is the first decentralised and privacy-preserving network that provides Denial-of-Service (DoS) protections for peer-to-peer messaging. It aims to enhance privacy and security in peer-to-peer communications by implementing innovative protocols and technologies. You can take a deep dive into the Waku Network to learn how we can scale peer-to-peer communications to millions of users in a decentralised, privacy-focused way in this [blog post from Waku Lead Franck](https://twitter.com/Waku_org/status/1772919691255644602). 
+
+After the recent boom in the generative artificial intelligence (AI) space, there is a growing misconception that web3 does not have native use cases for AI. Indeed, some are popularising an unfounded argument that web3 is being forced into the AI space. Learn how Waku fits into a privacy-preserving blockchain and AI stack [in this blog post](https://blog.waku.org/convergence-of-ai-blockchain-privacy/) from Guru.
+
+In this tutorial, Guru introduces Waku protocols and demonstrates with [DBlockEd](https://www.youtube.com/@DBlockEd) how to build a peer-to-peer game like Battleship with Waku. It is suitable for first-timers using Waku as it takes you from installing the necessary dependencies and using the starter kit to deploying your game. You can [watch the video here](https://twitter.com/Waku_org/status/1770117993197953099).
+
+
+# Technical Updates
+
+[rln-v2 has been integrated into nwaku](https://twitter.com/Waku_org/status/1768359640415273339), enabling variable messaging rates depending on the stake. Users can register to the rln-v2 membership set and send multiple messages per epoch. We are currently testing this release in simulations.
+
+The Waku template for Akash Network deployment has been updated to the latest nwaku version (v0.26.0) and is now available in the [Cloudmos Template catalogue](https://deploy.cloudmos.io/templates/akash-network-awesome-akash-waku). You can find the deployment manifests in the [Awesome Akash repository](https://github.com/akash-network/awesome-akash/tree/master/waku). Remember that you must follow the deployment process in the how-to section. 
+
+
+# Research and Development
+
+Below are the key highlights from across the research and development teams. 
+
+
+
+* The Store protocol is how nodes in the Waku network can be queried on their message history. We have developed a [proof-of-concept implementation](https://github.com/waku-org/nwaku/pull/2431) for the Store v3 protocol, which adds greater reliability to the query responses and incentivises node runners. 
+* We aim to ensure builders and hackers can easily use Waku without needing to learn all the protocols. 
+* We have created a new simplified SDK function for creating a node for autosharding. [Learn more about the JavaScript Waku SDK](https://docs.waku.org/guides/js-waku/). 
+* nwaku is a Nim-based Waku implementation to run a standalone node and access the network. We have [implemented CORS enhancements](https://github.com/waku-org/nwaku/issues/2223), as well as i[mplementing the RLN v2](https://github.com/waku-org/nwaku/issues/2345) proof-of-concept into nwaku. 
+* The research team has submitted two academic papers that are currently under review. 
+
+
+---
+
+
+# Community call
+
+Waku hosts a Community Call on X during the last week of each month. The objective of the call is to update the community on our progress and provide a space where questions can be put directly to the team.
+
+The Community Call took place on the 29th of March. You can [listen back to the full Space](https://twitter.com/i/spaces/1lDxLPRNqaMxm?s=20) and read the highlights below. [Aaron](https://twitter.com/vrycmfy), [Guru](https://twitter.com/hackyguru), [Vaclav,](https://twitter.com/vpavlin) and [Danish](https://twitter.com/danisharora099) from the Waku team led the call. 
+
+
+## ETHLatam winners: EduChain
+
+The Waku team was joined by bounty winners [Kenneth](https://twitter.com/KennethAlvaren5) and [Fernanda](https://twitter.com/ferji1997) from ETHLatam’s winning team, EduChain. Kenneth and Fernanda shared that they chose to hack with Waku because of their need to maintain transparent communications and feedback on their platform. Their project is blockchain-based, and demanded a quick and secure notification system for its users. They also shared that University officials have agreed to start trialling the EduChain platform with Masters-level scholarship students. Kudos to the EduChain team!
+
+
+## Improving the Store protocol 
+
+The Waku team shared three key milestones for 2024. The first is improvements to the [Store protocol](https://docs.waku.org/guides/nwaku/configure-nwaku/#configure-store-protocol-and-message-store) which provides message caching and serves it to network peers. The current version can, however, result in different nodes in the network providing you with different answers when queried. This is due to a reliability issue where the peer–to-peer network cannot absolutely guarantee that all of the messages are delivered to all of the nodes. V3 Store nodes will check with other nodes in the network to give you an accurate answer. The team is also working on incentivisation for running these nodes to provide further assurance and reliability to the network. This will require some form of payment for network users to query the nodes.
+
+
+## RLN v2 and v3
+
+RLN v1 is already being used in the Waku network to offer message rate limiting. This is recommended to use because, on any libp2p network, anyone can join and spam, which can result in DoS attacks. RLN is a privacy-preserving way to limit users’ messages and give assurance against DoS attacks. We use ZK knowledge proofs for each message; relayers see the proof and validate that the users are part of the network, permitting them to send one message per second. In RLN v2 and v3, the rate limit will be configurable per user. The Waku team is now testing and running simulations of v2 to ensure it offers the scalability and reliability required. 
+
+
+## Increasing Waku’s usability
+
+The third milestone highlighted in the call was “composing Waku protocols”. This milestone aims to ensure builders and hackers can easily use Waku without knowing all the details of each protocol, or needing to learn which protocol is best for specific use cases and actions. This year, the team will create high-level SDKs with APIs that can be extrapolated for certain uses. One example would be for builders using Waku to send messages; the protocols will be automatically selected without the builder needing to configure them. 
+
+By composing Waku protocols, anyone can immediately and easily start using Waku. If or when they reach the barriers of the high-level SDKs, they can then go deeper into the individual protocols. 
+
+
+---
+
+If you have questions about what the team has been doing or want to join a like-minded community focused on bringing peer-to-peer communications to millions of users, join the Waku [Discord](https://discord.com/invite/gMPAzmcDER) or follow us on [X](https://twitter.com/Waku_org).
+
+[Subscribe](https://waku.org/subscribe/) to the monthly newsletter for these updates directly in your inbox.
+
+
