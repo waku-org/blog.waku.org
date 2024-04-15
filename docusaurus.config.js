@@ -7,8 +7,8 @@ const katex = require('rehype-katex')
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Logos',
-  url: 'https://logos.co/',
+  title: 'Waku | Blog',
+  url: 'https://blog.waku.org/',
   baseUrl: '/',
 
   markdown: {
