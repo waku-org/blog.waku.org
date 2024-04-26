@@ -1,0 +1,112 @@
+---
+layout: post
+name: 'Deep Dive Into RAILGUN: Powered by Waku' 
+title: 'Deep Dive Into RAILGUN: Powered by Waku' 
+date: 2024-04-26 00:00:00
+authors: [guru]
+published: true
+slug: railgun-waku-case-study
+categories: waku
+image: /img/railguncover.png
+hide_table_of_contents: false
+---
+
+Learn more about how RAILGUN uses Waku to build a privacy layer on top of EVM based chains
+
+<!--truncate-->
+
+![Railgun Case Study](/img/railguncover.png)
+
+
+Does your Dapp need to offer private on-chain transactions? The following scenarios are examples of users that have such privacy requirements:
+
+* **Donations made for humanitarian reasons**: A humanitarian cross-border organisation like [UNICEF](https://www.unicef.org/) might not want to disclose their donations to specific countries or communities under crisis to avoid unwanted political tensions.
+* **Private expenses:** Some web3 users might not wish to keep their private expenses transparent (for example - costs related to medical treatments).
+* **Public goods funding:** Donars may wish to donate anonymously towards a public goods project.
+
+All the above examples are not possible directly with Ethereum since the blockchain is, by design, a public ledger. Continue reading to understand how Waku can offer your users privacy. 
+
+
+### **The transparent nature of Ethereum**
+
+Ethereum does not provide privacy by default; every transactional data in the Ethereum network is transparent. Similar to Bitcoin, _Ethereum-based technologies are designed for pseudonymity and not anonymity_. Lack of privacy is one of the many factors hindering DeFi use cases, as many financial applications require transactional data that is not publicly available. This creates the demand for privacy solutions like RAILGUN - a privacy-preserving project built using Waku.
+
+With RAILGUN, users can leverage various DeFi functionalities like lending, borrowing, swapping and trading tokens privately.
+
+
+# What is RAILGUN?
+
+<br /> 
+
+[RAILGUN](https://github.com/Railgun-Privacy) is an on-chain privacy system built for EVM-based blockchains. The RAILGUN community claims the project to be the only uncompromising on-chain privacy solution with unparalleled encryption, security, and with DeFi functionality on par with other leading wallets. 
+
+The core features RAILGUN provides are:
+
+
+##### **ZK Powered Security and Resilience**
+
+RAILGUN uses Zero-Knowledge (ZK) cryptography to enable the private use of smart contracts and DeFi without leaving the user’s preferred chain. This makes the solution self-custodial and bulletproof for private transactions without requiring a new L2 validator. There is no bridge risk, preserving security and decentralisation. In short, RAILGUN is as secure as the EVM chain on which it is deployed.
+
+
+##### **Bonded well with the EVM ecosystem**
+
+RAILGUN is not a separate blockchain that stands alone from the EVM ecosystem. The project seeks to enhance privacy utilities for the EVM ecosystem with the least dependencies. It solves many interoperability issues that exist with the other pro-privacy chains. RAILGUN is embedded into the Ethereum ecosystem; users can access transactional data and liquidity on Ethereum.
+
+
+##### **No breaking changes in the UX**
+
+The user experience is similar to leading self-custodial wallets like MetaMask to interact with Ethereum/EVM chains regarding liquidity and DeFi.
+
+
+# Components of RAILGUN
+
+<br/>
+
+The RAILGUN system has three key attributes:
+
+![RAILGUN Workflow](/img/railgun1.png)
+
+1. **RAILGUN Smart contracts**
+
+RAILGUN smart contracts enable Zero-Knowledge privacy for any on-chain dApp. By integrating these smart contracts, developers can provide an incognito-like experience for their users without affecting the user experience.
+
+
+
+2. **RAILGUN’s Relayer network**
+
+RAILGUN is supported by a decentralised relayer network that submits transactional data into the blockchain. The relayer network is also expected to preserve privacy to meet their ‘privacy-first’ approach and end-user anonymity requirements.
+
+
+
+3. **RAILGUN Wallets**
+
+RAILGUN does not have a single in-house official wallet but already has an ecosystem of wallets that integrate the RAILGUN smart contracts and run independently. Check out more about the RAILGUN wallets [on their community-curated website](https://www.railgun.org/wallets.html).
+
+<br/>
+
+# How does RAILGUN use Waku?
+
+<br/>
+
+Most of RAILGUN’s core functionalities are executed as on-chain transactions. However, RAILGUN’s infrastructure demands a network of privacy-preserving and decentralised relayers. These relayers should be able to submit user-signed transactions to the blockchain.
+
+![RAILGUN's Waku usage](/img/railgun2.png)
+
+### **Waku as a relayer network**
+
+Much of RAILGUN’s user experience and privacy features are powered by a relayer network provided by Waku. RAILGUN runs a self-federated network of [nwaku](https://github.com/waku-org/nwaku) nodes that relay the transactions from the signer into the blockchain. [nwaku](https://github.com/waku-org/nwaku) is a full node implementation of Waku that usually runs resource-rich environments. The [nwaku](https://github.com/waku-org/nwaku) relayers advertise their fees, and the signer selects the most appropriate relayer that leverages Waku to submit the transactional data.
+
+
+### **High-level architecture**
+
+The current Waku integration with RAILGUN uses nwaku via REST API, and the users leverage the wallet functionalities with [js-waku](https://github.com/waku-org/js-waku) , a lightweight implementation of Waku that makes it adaptable in resource-restricted environments like browsers and desktop apps.
+
+<br/>
+
+# Inspired by RAILGUN? Try Waku.
+
+<br/>
+
+RAILGUN is possibly the most unique use case for [Waku](https://waku.org/). If you are inspired to learn more about integrating Waku into your dApp, join our [Discord community](https://discord.waku.org/) . Our core contributors would be happy to help you get onboarded. The [Waku documentation](https://docs.waku.org/) is an excellent place to get started if you are looking for code snippets with in-depth conceptual guides.
+
+
