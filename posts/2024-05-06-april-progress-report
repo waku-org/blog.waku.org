@@ -40,11 +40,11 @@ The Waku team [came together](https://twitter.com/Waku_org/status/17757847056668
 
 ## Reads and learning resources
 
-**Ecosystem Spotlight: Railgun **
+**Ecosystem Spotlight: RAILGUN **
 
 Ethereum does not provide privacy by default; every transactional data in the Ethereum network is transparent. RAILGUN is an on-chain privacy system built for EVM-based blockchains. The RAILGUN community claims the project to be the only uncompromising on-chain privacy solution with unparalleled encryption, security, and with DeFi functionality on par with other leading wallets.
 
-[Learn more](https://twitter.com/Waku_org/status/1783845021583601783) about how RAILGUN uses Waku to build a privacy layer on top of EVM-based chains. 
+[Learn more](https://twitter.com/Waku_org/status/1783845021583601783) about how RAILGUN uses Waku to build a privacy layer on top of EVM-based chains. You can also learn more in this our [Ecosystem Spotlight video](https://www.youtube.com/watch?v=SbgslZxyV3M).
 
 **Waku’s origin story**
 
@@ -106,12 +106,12 @@ Status: In Progress
 
 Waku hosts a Community Call on X during the last week of each month. The objective of the call is to update the community on our progress and provide a space where questions can be put directly to the team.
 
-The Community Call took place on the 26th March. You can [listen back to the full Space](https://x.com/Waku_org/status/1783888975867908582) and read the highlights below. [Guru](https://twitter.com/hackyguru) and [Vaclav](https://twitter.com/vpavlin) from the Waku team led the call. They were also joined by [Kieran](https://twitter.com/mesquka) from Railgun. 
+The Community Call took place on the 26th March. You can [listen back to the full Space](https://x.com/Waku_org/status/1783888975867908582) and read the highlights below. [Guru](https://twitter.com/hackyguru) and [Vaclav](https://twitter.com/vpavlin) from the Waku team led the call. They were also joined by [Kieran](https://twitter.com/mesquka) from RAILGUN. 
 
 
-## Why Railgun chose Waku
+## Why RAILGUN chose Waku
 
-Waku is designed to operate both off-chain and chain agnostic, serving as a peer-to-peer networking library enabling relevant wallets to communicate with relayer RPCs. Its primary aim is to minimise data leakage, particularly concerning IP addresses, which could potentially compromise the anonymity of Railgun users.
+Waku is designed to operate both off-chain and chain agnostic, serving as a peer-to-peer networking library enabling relevant wallets to communicate with relayer RPCs. Its primary aim is to minimise data leakage, particularly concerning IP addresses, which could potentially compromise the anonymity of RAILGUN users.
 
 Initially, RAILGUN attempted to utilise libp2p directly, the underlying framework upon which Waku is constructed, and endeavoured to incorporate a transport tool for use as the networking library. However, this proved exceedingly challenging, and the concept never progressed to production. Instead, the team found that Waku protocols could be implemented or adapted effectively. Keiran remarked, "It just turned out to be well-suited for our needs, so we've stuck with it."
 
@@ -127,9 +127,9 @@ While this level of transparency may be acceptable for occasional meme coin trad
 
 ## On Vitalik Buterin
 
-Railgun garnered considerable attention following the news that Vitalik Buterin had transferred 100 ETH to the platform. Keiran commented that this action exemplified one of Railgun's most compelling use cases: providing privacy for public figures with substantial funds tied to their identities. Such visibility naturally attracts scrutiny and assumptions, necessitating a means to safeguard personal data.
+RAILGUN garnered considerable attention following the news that Vitalik Buterin had transferred 100 ETH to the platform. Keiran commented that this action exemplified one of RAILGUN's most compelling use cases: providing privacy for public figures with substantial funds tied to their identities. Such visibility naturally attracts scrutiny and assumptions, necessitating a means to safeguard personal data.
 
-Keiran disclosed that he believed Vitalik had been utilising Railgun for approximately six months before publicly endorsing it. Subsequently, Railgun experienced a surge of interest from new users and critics alike. This heightened interest in Railgun shows no signs of abating, but once it does, the team plans to conduct a retrospective analysis on its impact on growth and overall sentiment.
+Keiran disclosed that he believed Vitalik had been utilising RAILGUN for approximately six months before publicly endorsing it. Subsequently, RAILGUN experienced a surge of interest from new users and critics alike. This heightened interest in RAILGUN shows no signs of abating, but once it does, the team plans to conduct a retrospective analysis on its impact on growth and overall sentiment.
 
 
 ---
