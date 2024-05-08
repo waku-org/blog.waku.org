@@ -21,7 +21,7 @@ Highlights from the Waku team in April 2024.
 
 **ETHDam 12th - 14th April**
 
-After a busy hackathon in Amsterdam that included the [workshop](https://twitter.com/Waku_org/status/1779450924697624997) “Privacy-preserving web3 communications at scale with Waku”, we announced the [ETHDam hackathon winners](https://twitter.com/Waku_org/status/1780243018173325819). Team [StealthAlloc](https://taikai.network/cryptocanal/hackathons/ethdam2024/projects/cluxse8cz00pjz3010wbq3thf/idea) claimed first place with their platform that bridges creators and DAOs to ensure confidential voting and fair allocations for quadratic funding. The team integrated Waku to support private communication channels between DAO treasuries and funding pools.
+After a busy hackathon in Amsterdam that included the [workshop](https://www.youtube.com/watch?v=K1S0Zzzeiqo) “Privacy-preserving web3 communications at scale with Waku”, we announced the [ETHDam hackathon winners](https://twitter.com/Waku_org/status/1780243018173325819). Team [StealthAlloc](https://taikai.network/cryptocanal/hackathons/ethdam2024/projects/cluxse8cz00pjz3010wbq3thf/idea) claimed first place with their platform that bridges creators and DAOs to ensure confidential voting and fair allocations for quadratic funding. The team integrated Waku to support private communication channels between DAO treasuries and funding pools.
 
 The runners-up [Brain Crypto Interfaces](https://taikai.network/cryptocanal/hackathons/ethdam2024/projects/cluz9mmr1016cyz01g3iry70i/idea) suggests using incentives for uploading brain data to improve open-source classification models. The team used Waku to facilitate private and secure communications between users. 
 
