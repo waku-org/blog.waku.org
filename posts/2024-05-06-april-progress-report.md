@@ -55,9 +55,9 @@ Bookmark [waku.org/event](walu.org/events)s, where we’ll be adding more inform
   </tr>
   <tr>
    <td><a href="https://events.geekle.us/wsas/">Worldwide</a>
-<p>
+
 <a href="https://events.geekle.us/wsas/">Software Architecture</a>
-<p>
+
 <a href="https://events.geekle.us/wsas/">Summit 2024</a>
    </td>
    <td>7th - 8th May
