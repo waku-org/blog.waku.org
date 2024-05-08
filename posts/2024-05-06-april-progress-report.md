@@ -14,7 +14,7 @@ Highlights from the Waku team in April 2024.
 
 <!--truncate-->
 
----Welcome to the monthly Waku progress report. The EcoDev group at Waku covers community, growth, partnerships, and communications. The Research and Development group covers the academic and engineering research that supports Waku’s development, as well as the core team of Waku engineers building the protocols. Each month, we will share the key highlights and progress of the teams. You can [subscribe](https://waku.org/subscribe/) to the monthly newsletter if you prefer to receive an abridged version of these updates in your inbox.
+Welcome to the monthly Waku progress report. The EcoDev group at Waku covers community, growth, partnerships, and communications. The Research and Development group covers the academic and engineering research that supports Waku’s development, as well as the core team of Waku engineers building the protocols. Each month, we will share the key highlights and progress of the teams. You can [subscribe](https://waku.org/subscribe/) to the monthly newsletter if you prefer to receive an abridged version of these updates in your inbox.
 
 
 ## Events
@@ -158,8 +158,7 @@ After the development of the Ethereum subprotocol Whisper was abandoned, Status 
 
 ## News
 
-
-## In an effort to protect digital privacy, the Logos technology stack, including Waku, has entered into [a strategic partnership with Web3 Privacy Now](https://twitter.com/Logos_network/status/1780255677836923133). The projects will launch initiatives to fortify data protection mechanisms, empower users with greater control of their data, and instil a commitment to privacy in web3 true to its cypherpunk roots.
+In an effort to protect digital privacy, the Logos technology stack, including Waku, has entered into [a strategic partnership with Web3 Privacy Now](https://twitter.com/Logos_network/status/1780255677836923133). The projects will launch initiatives to fortify data protection mechanisms, empower users with greater control of their data, and instil a commitment to privacy in web3 true to its cypherpunk roots.
 
 
 ## Research and Development
