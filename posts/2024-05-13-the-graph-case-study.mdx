@@ -35,7 +35,11 @@ What is our solution? The Graph.
 ## Gateway to querying web3 data - The Graph
 The Graph aims to be the querying layer for blockchains. It intends to create a decentralised protocol for indexing and querying blockchain data. The Graph is similar to a middleware layer that indexes data from blockchains and storage networks, making it easily accessible and queryable without much hassle.
 
+<<<<<<< HEAD
 There are various segments within The Graph Protocol:
+=======
+There are various segments within The Graph protocol:
+>>>>>>> 880a4f6 (adding thegraph blog)
 ### 1. Data Indexing Segment:
 - **Subgraphs:** The open-source GraphQL schemas that define the data requirements and mapping rules.
 - **Indexers:** The nodes responsible for processing blockchain data based on the subgraph specifications and storing the indexed data in a queryable format.
@@ -47,7 +51,11 @@ There are various segments within The Graph Protocol:
 - **The Graph Network:** The decentralised network of indexers, curators, and other participants contributing to indexing and querying blockchain data, operating on the Waku messaging protocol.
 
 ## Proof of Indexing
+<<<<<<< HEAD
 Proof of Indexing is a mechanism The Graph uses to ensure the integrity and reliability of the indexed data within its ecosystem. It is closely related to the core functionality of The Graph Protocol.
+=======
+Proof of Indexing is a mechanism The Graph uses to ensure the integrity and reliability of the indexed data within its ecosystem. It is closely related to the core functionality of The Graph protocol.
+>>>>>>> 880a4f6 (adding thegraph blog)
 
 Proof of Indexing works by having indexers periodically submit a proof that they have correctly indexed the data specified by the assigned subgraphs. These proofs are cryptographic hashes that summarise the indexed data, allowing other nodes in the network to verify the correctness of the indexing process without having to re-index the entire data themselves.
 
@@ -59,6 +67,7 @@ The role of Proof of Indexing is twofold:
 
 ## Core developer teams in The Graph ecosystem
 
+<<<<<<< HEAD
 Multiple teams work on various focus areas within The Graph. [GraphOps](https://graphops.xyz) is one of the teams focusing on data indexing. GraphOps leverages Waku for a unique use case in ['subgraph radios'](https://thegraph.com/blog/subgraph-radio-information-exchange/), which we will explain in detail.
 
 Subgraph radios are a feature introduced by Graphcast that allows real-time streaming of data updates and events from The Graph's indexed subgraphs. They bridge The Graph's indexed data and Graphcast's event processing framework, making subgraph radios a key component of Graphcast's real-time data streaming and event processing capabilities.
@@ -68,18 +77,37 @@ Subgraph radios are a feature introduced by Graphcast that allows real-time stre
 The Graph is a decentralised indexing layer that does not rely on centralised communications. Graphcast was introduced to provide uncompromised communications in The Graph's indexing solution. 
 
 Before the GraphOps team introduced Graphcast, the majority of the indexing solutions used three ways to communicate:
+=======
+Multiple teams work on various focus areas within The Graph. [GraphOps](https://graphops.xyz) is one of the teams focusing on data indexing. GraphOps leverages Waku for a unique use case in ['Subgraph radios'](https://thegraph.com/blog/subgraph-radio-information-exchange/), which we will explain in detail.
+
+Subgraph Radios are a feature introduced by GraphCast that allows real-time streaming of data updates and events from The Graph's indexed subgraphs. They bridge The Graph's indexed data and GraphCast's event processing framework, making Subgraph Radios a key component of GraphCast's real-time data streaming and event processing capabilities.
+
+## What is GraphCast?
+
+The Graph will be a fully decentralised indexing layer that does not rely on centralised communications. GraphCast was introduced to provide uncompromised communications in The Graph's indexing solution. 
+
+Before the GraphOps team introduced GraphCast, the majority of the indexing solutions used three ways to communicate:
+>>>>>>> 880a4f6 (adding thegraph blog)
 
 **1. Onchain communications:** Expensive and inefficient regarding scalability as the users need to pay gas for every state change.
 
 **2. Old-fashioned group chat:** It is highly dependent on Web2 communications, which have a single point of failure and higher security risks.
 
 **3. Automated bots:** Several indexer bots running on centralised servers to automate communication on event signalling.
+<<<<<<< HEAD
 
 All three solutions listed above could have been more efficient. Hence, we wanted a more robust and decentralised communications infrastructure to fix several issues. The core contributors of GraphOps mention that Waku is an obvious choice for solving this problem. Continue reading to learn more about how Graphcast uses Waku.
 
 ## How does The Graph use Waku?
 
 Waku is one of the foundational technologies used to build Graphcast, a domain-specific gossip network for indexers.
+=======
+All the three solutions listed above could have been more efficient. Hence, we wanted a more robust and decentralised communications infrastructure to fix several issues. The core contributors of GraphOps mention that Waku is an obvious choice for solving this problem. Continue reading to learn more about how GraphCast uses Waku.
+
+## How does The Graph use Waku?
+
+Waku is one of the foundational technologies used to build GraphCast, a domain-specific gossip network for indexers.
+>>>>>>> 880a4f6 (adding thegraph blog)
 
 ### Waku as an infrastructure for decentralised indexing
 To maintain the decentralised nature of its infrastructure, The Graph leverages [Waku](https://waku.org), a family of decentralised Web3 communications protocols, for communication between its indexers. Indexers are responsible for processing blockchain data and creating queryable subgraphs.
@@ -88,17 +116,29 @@ Waku enables indexers to communicate and sync data peer-to-peer, eliminating the
 
 By utilising Waku, The Graph ensures that its indexing infrastructure remains decentralised, resilient, and resistant to single points of failure. This not only enhances the security and reliability of The Graph's services but also upholds the core values of Web3, fostering a truly decentralised ecosystem for data indexing and querying.
 
+<<<<<<< HEAD
 ### The Waku implementation used for Graphcast
 
 Waku provides [several implementations](https://docs.waku.org/) that apply to various use cases based on resource availability. Graphcast uses Waku's Rust bindings. In Graphcast's Waku integration, all downstream radios act as Waku relay nodes. Graphcast uses its unique pubsub topic. The GraphOps team also operates their own `nwaku` fleet in addition to the already-existing Waku nodes that support Graphcast's pubsub topic.
+=======
+### The Waku implementation used for GraphCast
+
+Waku provides [several implementations](https://docs.waku.org/) that apply to various use cases based on resource availability. GraphCast uses Waku's Rust bindings. In GraphCast's Waku integration, all downstream radios act as Waku relay nodes. GraphCast uses its unique pubsub topic. The GraphOps team also operates their own `nwaku` fleet in addition to the already-existing Waku nodes that support GraphCast's pubsub topic.
+>>>>>>> 880a4f6 (adding thegraph blog)
 
 ### Subgraph versioning with Waku
 
 GraphOps core contributors also mentioned they face difficulties with subgraph versioning. These difficulties revolve around syncing the subgraph data based on the correct versions.
 
+<<<<<<< HEAD
 The core contributors are also interested in exploring `js-waku`- a light node implementation of Waku - to create a web interface that allows sending messages to the Graphcast network to sync the subgraph data based on the correct versions. 
 
 This is another fantastic use case that Waku provides to Graphcast, providing private, robust, and reliable communication.
+=======
+The core contributors are also interested in exploring `js-waku`- a light node implementation of Waku - to create a web interface that allows sending messages to the GraphCast network to sync the subgraph data based on the correct versions. 
+
+This is another fantastic use case that Waku provides to GraphCast, providing private, robust, and reliable communication.
+>>>>>>> 880a4f6 (adding thegraph blog)
 
 ## Closing words
 
