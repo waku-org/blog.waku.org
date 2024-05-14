@@ -78,6 +78,7 @@ Before the GraphOps team introduced Graphcast, the majority of the indexing solu
 <<<<<<< HEAD
 
 All three solutions listed above could have been more efficient. Hence, we wanted a more robust and decentralised communications infrastructure to fix several issues. The core contributors of GraphOps mention that Waku is an obvious choice for solving this problem. Continue reading to learn more about how Graphcast uses Waku.
+<<<<<<< HEAD
 
 ## How does The Graph use Waku?
 
@@ -92,6 +93,12 @@ All three solutions listed above could have been more efficient. Hence, we wante
 
 Waku is one of the foundational technologies used to build GraphCast, a domain-specific gossip network for indexers.
 >>>>>>> 880a4f6 (adding thegraph blog)
+=======
+
+## How does The Graph use Waku?
+
+Waku is one of the foundational technologies used to build Graphcast, a domain-specific gossip network for indexers.
+>>>>>>> efb32bf (Update 2024-05-13-the-graph-case-study.mdx)
 
 ### Waku as an infrastructure for decentralised indexing
 To maintain the decentralised nature of its infrastructure, The Graph leverages [Waku](https://waku.org), a family of decentralised Web3 communications protocols, for communication between its indexers. Indexers are responsible for processing blockchain data and creating queryable subgraphs.
@@ -101,6 +108,7 @@ Waku enables indexers to communicate and sync data peer-to-peer, eliminating the
 By utilising Waku, The Graph ensures that its indexing infrastructure remains decentralised, resilient, and resistant to single points of failure. This not only enhances the security and reliability of The Graph's services but also upholds the core values of Web3, fostering a truly decentralised ecosystem for data indexing and querying.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ### The Waku implementation used for Graphcast
 
 Waku provides [several implementations](https://docs.waku.org/) that apply to various use cases based on resource availability. Graphcast uses Waku's Rust bindings. In Graphcast's Waku integration, all downstream radios act as Waku relay nodes. Graphcast uses its unique pubsub topic. The GraphOps team also operates their own `nwaku` fleet in addition to the already-existing Waku nodes that support Graphcast's pubsub topic.
@@ -109,11 +117,17 @@ Waku provides [several implementations](https://docs.waku.org/) that apply to va
 
 Waku provides [several implementations](https://docs.waku.org/) that apply to various use cases based on resource availability. GraphCast uses Waku's Rust bindings. In GraphCast's Waku integration, all downstream radios act as Waku relay nodes. GraphCast uses its unique pubsub topic. The GraphOps team also operates their own `nwaku` fleet in addition to the already-existing Waku nodes that support GraphCast's pubsub topic.
 >>>>>>> 880a4f6 (adding thegraph blog)
+=======
+### The Waku implementation used for Graphcast
+
+Waku provides [several implementations](https://docs.waku.org/) that apply to various use cases based on resource availability. Graphcast uses Waku's Rust bindings. In Graphcast's Waku integration, all downstream radios act as Waku relay nodes. Graphcast uses its unique pubsub topic. The GraphOps team also operates their own `nwaku` fleet in addition to the already-existing Waku nodes that support Graphcast's pubsub topic.
+>>>>>>> efb32bf (Update 2024-05-13-the-graph-case-study.mdx)
 
 ### Subgraph versioning with Waku
 
 GraphOps core contributors also mentioned they face difficulties with subgraph versioning. These difficulties revolve around syncing the subgraph data based on the correct versions.
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 The core contributors are also interested in exploring `js-waku`- a light node implementation of Waku - to create a web interface that allows sending messages to the Graphcast network to sync the subgraph data based on the correct versions. 
 
@@ -123,6 +137,11 @@ The core contributors are also interested in exploring `js-waku`- a light node i
 
 This is another fantastic use case that Waku provides to GraphCast, providing private, robust, and reliable communication.
 >>>>>>> 880a4f6 (adding thegraph blog)
+=======
+The core contributors are also interested in exploring `js-waku`- a light node implementation of Waku - to create a web interface that allows sending messages to the Graphcast network to sync the subgraph data based on the correct versions. 
+
+This is another fantastic use case that Waku provides to Graphcast, providing private, robust, and reliable communication.
+>>>>>>> efb32bf (Update 2024-05-13-the-graph-case-study.mdx)
 
 ## Closing words
 
