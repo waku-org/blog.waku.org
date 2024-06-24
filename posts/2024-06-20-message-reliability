@@ -20,7 +20,7 @@ Those protocols have been designed to solve message routing, focusing on privacy
 
 While libp2p gossipsub and Waku relay are [reliable](https://docs.google.com/document/d/1vK1OxI-YYqYWRYpb3imENcsUvFXBOzTkT6xnfUNA0yM/edit?usp=sharing) in a well-connected environment, those protocols remain only as reliable as their underlying transport (TCP, WebSocket).
 
-Building [working applications](https://blog.waku.org/railgun-waku-case-study) over Waku is possible, but end-to-end reliability is up to the application developer. Those strategies can be heavy on resource consumption. Moreover, the redundancy, dynamic mesh of peers, and gossiping that provide Waku Relay with its reliability are not present out of the box for light client protocols.
+Building [working](https://blog.waku.org/railgun-waku-case-study) [applications](https://blog.waku.org/thegraph-waku-case-study) over Waku is possible, but end-to-end reliability is up to the application developer. Those strategies can be heavy on resource consumption. Moreover, the redundancy, dynamic mesh of peers, and gossiping that provide Waku Relay with its reliability are not present out of the box for light client protocols.
 
 These are overheads for application developers who would rather focus on application logic than connection management for Waku.
 
