@@ -47,7 +47,7 @@ In the context of Waku, there are three layers to reliability, from lowest to hi
 
 Apart from setting the correct parameters for TCP usage, we can do little to improve its reliability beyond what can be done in the underlying libp2p library. However, new transports, such as QUIC and WebTransport, can be introduced to improve on TCP/WebSocket.
 
-Libp2p-gossipsub usage is a similar case. We can tune some parameters at Waku level. We are also reviewing go-libp2p-gossipsub and nim-libp2p-gossipsub behaviour in desktop and mobile environments to answer questions such as: can disconnection detection in gossipsub be improved? 
+Libp2p-gossipsub usage is a similar case. We can tune some parameters at Waku level. We are also reviewing go-libp2p-gossipsub and nim-libp2p-gossipsub behaviour in desktop and mobile environments to answer questions such as: can disconnection detection in gossipsub be improved?
 
 No major changes are expected at this layer, but understanding the inner workings will enable a more efficient strategy at the next layer.
 
@@ -69,7 +69,7 @@ In the user's eyes, meaningful reliability means ascertaining whether the intend
 
 End-to-end reliability is the way that specific users can communicate reliably across the network, in contrast with peer-to-peer reliability, which is focused on reliability between somewhat random reachable nodes in the network. It also ensures that nodes that are multiple hops away from each other are able to exchange messages reliably.
 
-[MVDS](https://rfc.vac.dev/vac/2/mvds) is an end-to-end reliability protocol. It is used in the Status application. The main caveat is that it only handles communication between two people and cannot be scaled without drastically increasing bandwidth usage. 
+[MVDS](https://rfc.vac.dev/vac/2/mvds) is an end-to-end reliability protocol. It is used in the Status application. The main caveat is that it only handles communication between two people and cannot be scaled without drastically increasing bandwidth usage.
 
 With Status Communities, we want to enable thousands of users in a given community, so a new protocol is needed to enable end-to-end reliability among community participants.
 
@@ -87,7 +87,7 @@ Unfortunately, MLS does assume the use of some central[services](https://datatra
 
 ## APIs and Timeline
 
-![alt_text](static/img/1 - Waku Stack Overview.jpg)
+![Waku Stack Overview](/img/waku-stack-overview.jpg)
 
 The Waku team is currently focusing on providing the reliability layers outlined above. We will deliver this work through new APIs for application developers that abstract complexity and use the existing Waku protocols with new reliability guarantees and heuristics.
 
