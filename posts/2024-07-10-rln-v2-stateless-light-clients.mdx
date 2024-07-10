@@ -42,7 +42,7 @@ But how does it work? There are two main components:
 - 🗝️+🔑: The RLN membership, which is made of a public (🔑) and private key (🗝️), whose holder can use to “sign” messages valid in the network. Anyone can register one in the smart contract.
 - 📧: The RLN proof and nullifier. It allows anyone to verify that a message is valid according to the rules. The nullifier acts as a stamp that is attached to each message and allows nodes to rate-limit the sender, while being privacy-preserving.
 
-![alt_text](static/img/rlnv2-stamps.png)
+![rlnv2-stamps](/img/rlnv2-stamps.png)
 
 Each membership (🗝️+🔑) is virtually given 100 stamps (📧) every 10 minutes to spend on credits to send messages. Every sent message consumes a stamp. Nodes in the network count them and reject messages with none or repeated ones. And nodes are incentivised via reputation to not relay messages with invalid stamps.
 
@@ -78,7 +78,7 @@ Since root (🫚) and proofs (🌲) are now publicly available in the smart cont
 - 🗝️+🌲 = 📧 Using its private key (🗝️) and the leaf Merkle proof (🌲) a publisher can generate the stamp (📧) that is attached to the message (💬).
 - 🫚+📧 = ✅/❌ The Merkle root (🫚) and the included stamp (📧) of the message (💬), can be used by the subscriber to verify if the message is legit to accept (✅) or reject (❌) it.
 
-![alt_text](static/img/rln-light.png)
+![rln-light](/img/rln-light.png)
 
 Note that both `merkleProofElements(leaf)` and `root()` are free to call. They are `view` functions that don’t modify any state. Moreover, they don’t consume much resources and should work in any RPC provider.
 
