@@ -10,39 +10,42 @@ categories: waku, progress
 image: /img/black-waku-logo-with-name.png
 ---
 
-> **TLDR**: We have just shipped two important features to The Waku Network that offer more granularity for RLN rate-limiting and add support for stateless light clients.
+> **TLDR**: We have just shipped two important features to The Waku Network that offer more granularity for RLN rate limiting and add support for stateless light clients.
 
 <!--truncate-->
 
 # Introduction to The Waku Network
 
-Waku launched The Waku Network last [December 2023](https://thedefiant.io/news/press-releases/waku-launches-first-decentralised-privacy-preserving-dos-protections-for-peer-to-peer-messaging). A first-of-its-kind decentralized network focused on privacy and censorship resistance, running an opinionated instance of the Waku protocol with the following features:
 
-- Generalized messaging network, that allows point-to-point or broadcast communications, preserving the identity of the sender, not linking its messages to any identity or IP address.
-- A decentralized and permissionless network acting as a common infrastructure, not controlled by a single actor and open to anyone, both users and operators.
-- Rate-limited to ensure a fair usage of resources. It uses RLN (Rate Limiting Nullifiers) that leverage zero-knowledge cryptography to guarantee users adhere to a rate limit without compromising their privacy. Anyone can register in the smart contract, currently deployed in Sepolia testnet, by paying a small fee.
+Waku launched The Waku Network last [December 2023](https://thedefiant.io/news/press-releases/waku-launches-first-decentralised-privacy-preserving-dos-protections-for-peer-to-peer-messaging). A first-of-its-kind decentralised network focused on privacy and censorship resistance, running an opinionated instance of the Waku protocol with the following features:
+
+- A generalized messaging network that allows point-to-point or broadcast communications, preserving the sender's identity and not linking its messages to any identity or IP address.
+- A decentralised and permissionless network acting as a common infrastructure, not controlled by a single actor and open to anyone, both users and operators.
+- rate limited to ensure a fair usage of resources. It uses RLN (Rate Limiting Nullifiers) that leverage zero-knowledge cryptography to guarantee users adhere to a rate limit without compromising their privacy. Anyone can register in the smart contract, currently deployed in Sepolia testnet, by paying a small fee.
 - Support for light clients, defined as resource-restricted devices that interact with the protocol without participating in message routing.
-- Incentivized, both non-economic (reputation mechanism already implemented) and economic (crypto incentives currently under research).
+- Incentivised, both non-economic (reputation mechanism already implemented) and economic (crypto incentives currently under research).
 
-Over the last months, we detected a few limitations introduced by the usage of RLN for rate limiting, and we have been working hard to address them. As a result, we are proud to announce that the following new features are live in The Waku Network:
+Over the last months, we detected a few limitations introduced by the usage of RLN for rate limiting, and we have been working hard to address them. As a result, we are proud to announce that the following new features are live on The Waku Network:
+
 
 > We are excited to announce that last 3rd of July 2024, we introduced the following features, part of release [v0.30.1](https://github.com/waku-org/nwaku/releases/tag/v0.30.1).
 > 
-- **Better rate-limiting:** The previous rate-limiting mechanism (RLN-V1) only allowed to rate limit `1` message every `y` seconds. This wasn't practical and it's why we have just shipped RLN-V2, which allows nodes to rate limit `x` messages every `y` seconds.
+- **Better rate limiting:** The previous rate limiting mechanism (RLN-V1) only allowed to rate limit `1` message every `y` seconds. This wasn't practical and it's why we have just shipped RLN-V2, which allows nodes to rate limit `x` messages every `y` seconds.
 - **Stateless light clients:** The main problem light clients had, was that they needed to sync and keep track of the Merkle tree that stored all memberships. This was slow and required both bandwidth and resources, a no-go for resource-restricted devices. After some changes in the smart contract, we now store the whole Merkle tree on it, which allows light clients to be stateless. The smart contract now provides all the required information. No need to sync. No need to keep state.
 
-# Better rate-limiting
+# Better rate limiting
 
-One of the main limitations of the previous rate-limiting mechanism (aka RLN-V1), was that it only allowed to rate limit `1` message every `y` seconds. This wasn’t practical since a low value would allow too many messages, and a high one would make the network unusable in practice.
 
-Over the last months, we have been working hard in integrating [RLN-V2](https://github.com/vacp2p/rfc-index/blob/a5b24ac0a27da361312260f9da372a0e6e812212/vac/raw/rln-v2.md), which allows nodes to rate limit `x` messages every `y` seconds. This gives us extra granularity, making it more usable in practice.
+One of the main limitations of the previous rate limiting mechanism (aka RLN-V1), was that it only allowed to rate limit `1` message every `y` seconds. This wasn’t practical since a low value would allow too many messages, and a high one would make the network unusable in practice.
 
-> The rate-limit **was 1 message per second.** Now with RLN-V2 The Waku Network allows more granularity, initially set to **100 messages every 10 minutes** for each member. There are plans to extend this to different “tiers” where each limit will have a different cost.
+Over the last months, we have been working hard to integrate [RLN-V2](https://github.com/vacp2p/rfc-index/blob/a5b24ac0a27da361312260f9da372a0e6e812212/vac/raw/rln-v2.md), which allows nodes to rate limit `x` messages every `y` second. This gives us extra granularity, making it more usable in practice.
+
+> The rate limit **was 1 message per second.** Now with RLN-V2 The Waku Network allows more granularity, initially set to **100 messages every 10 minutes** for each member. There are plans to extend this to different “tiers” where each limit will have a different cost.
 
 But how does it work? There are two main components:
 
 - 🗝️+🔑: The RLN membership, which is made of a public (🔑) and private key (🗝️), whose holder can use to “sign” messages valid in the network. Anyone can register one in the smart contract.
-- 📧: The RLN proof and nullifier. It allows anyone to verify that a message is valid according to the rules. The nullifier acts as a stamp that is attached to each message and allows nodes to rate-limit the sender, while being privacy-preserving.
+- 📧: The RLN proof and nullifier. It allows anyone to verify that a message is valid according to the rules. The nullifier acts as a stamp that is attached to each message and allows nodes to rate limit the sender while being privacy-preserving.
 
 ![rlnv2-stamps](/img/rlnv2-stamps.png)
 
@@ -54,15 +57,16 @@ The pricing mechanism is yet to be set. By now a user wanting to register a memb
 
 # Stateless light clients
 
-We define light-clients as the nodes that interact with The Waku Network to send or receive messages but don’t participate in routing nor offer other capabilities such as storing historical messages. In other words, they are nodes running in resource-restricted devices interacting with the network but not contributing to it. Think of a client running on a phone or browser.
 
-In order to send a message, the light client must attach a proof/stamp (📧) to the message (💬) as explained before. This stamp is in reality an RLN zero-knowledge proof to prove that its valid and respects the rate-limit.
+We define light clients as the nodes that interact with The Waku Network to send or receive messages but don’t participate in routing nor offer other capabilities such as storing historical messages. In other words, they are nodes running in resource-restricted devices interacting with the network but not contributing to it. Think of a client running on a phone or browser.
 
-Up until now, there was a lot of friction for light clients, since in order to get the stamp (📧), they required the whole Merkle tree storing all memberships. Synchronizing this tree consumed resources: bandwidth, storage, and computation, which was a no-go for light clients.
+In order to send a message, the light client must attach a proof/stamp (📧) to the message (💬) as explained before. This stamp is, in reality, an RLN zero-knowledge proof to prove that it's valid and respects the rate limit.
 
-However, we are proud to announce that now the Merkle tree is stored onchain. This removes the need for light clients to sync the tree. The contract provides all the required information. No need to sync. No need to keep state anymore.
+Up until now, light clients have encountered a lot of friction since, in order to get the stamp (📧), they required the whole Merkle tree to store all memberships. Synchronizing this tree consumes bandwidth, storage, and computation, which is a no-go for light clients.
 
-> The RLN membership Merkle tree is now stored in the smart contract, which allows light clients to be stateless. No need synchronize the Merkle Tree. The contract provides all required information via `merkleProofElements()` (to generate proofs) and `root()` (to verify them).
+However, we proudly announce that the Merkle tree is now stored onchain. This removes the need for light clients to sync the tree. The contract provides all the required information. No need to sync. No need to keep state anymore.
+
+> The RLN membership Merkle tree is now stored in the smart contract, which allows light clients to be stateless. No need to synchronize the Merkle Tree. The contract provides all required information via `merkleProofElements()` (to generate proofs) and `root()` (to verify them).
 > 
 
 Let's see an example. A membership is represented by two keys:
@@ -72,19 +76,19 @@ Let's see an example. A membership is represented by two keys:
 
 Now the smart contract provides both:
 
-- 🫚: Merkle root of the tree containing all memberships 🔑, accesible by `root()`
-- 🌲: Merkle proof of a given membership 🔑, accesible by `merkleProofElements(leaf)`
+- 🫚: Merkle root of the tree containing all memberships 🔑, accessible by `root()`
+- 🌲: Merkle proof of a given membership 🔑, accessible by `merkleProofElements(leaf)`
 
-Since root (🫚) and proofs (🌲) are now publicly available in the smart contract, light clients don’t have to calculate these themselves. These allows seamless proof generation (for publishers) and verification (for subscribers):
+Since root (🫚) and proofs (🌲) are now publicly available in the smart contract, light clients don’t have to calculate these themselves. These allow seamless proof generation (for publishers) and verification (for subscribers):
 
 - 🗝️+🌲 = 📧 Using its private key (🗝️) and the leaf Merkle proof (🌲) a publisher can generate the stamp (📧) that is attached to the message (💬).
 - 🫚+📧 = ✅/❌ The Merkle root (🫚) and the included stamp (📧) of the message (💬), can be used by the subscriber to verify if the message is legit to accept (✅) or reject (❌) it.
 
 ![rln-light](/img/rln-light.png)
 
-Note that both `merkleProofElements(leaf)` and `root()` are free to call. They are `view` functions that don’t modify any state. Moreover, they don’t consume much resources and should work in any RPC provider.
+Note that both `merkleProofElements(leaf)` and `root()` are free to call. They are `view` functions that don’t modify any state. Moreover, they don’t consume many resources and should work with any RPC provider.
 
-Note also that they are lazily evaluated, meaning that they are calculated on each call based on some intermediate stored leafs. This allows to save lots of gas. Insertions are expected to cost between 100k and 200k gas, hitting rarely more than that in `2^n` leafs.
+Note also that they are lazily evaluated, meaning that they are calculated on each call based on some intermediate stored leafs. This allows to save lots of gas. Insertions are expected to cost between 100k and 200k gas, rarely hitting more than that in `2^n` leafs.
 
 The contract is currently deployed in Ethereum Sepolia testnet, but its expected to move to a Layer 2 where gas would be even cheaper.
 
@@ -95,7 +99,7 @@ Both of these features are live in The Waku Network, so if you want to test them
 ## References:
 
 - [RLN Original spec](https://rate-limiting-nullifier.github.io/rln-docs/)
-- [RLN-V2 Original post](https://zkresear.ch/t/rate-limit-nullifier-v2-circuits/102)
+- [RLN-V2 Original post](https://zkresear.ch/t/rate limit-nullifier-v2-circuits/102)
 - [RLN-V2 Waku spec](https://github.com/vacp2p/rfc-index/blob/a5b24ac0a27da361312260f9da372a0e6e812212/vac/raw/rln-v2.md)
 - [The Waku Network configuration](https://github.com/waku-org/nwaku/blob/8bfad3ab453f96ac545c7cb0af06d0c0f34d1356/waku/factory/networks_config.nim#L31)
 - [LazyIMT Merkle Tree](https://github.com/privacy-scaling-explorations/zk-kit)
